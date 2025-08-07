@@ -4,34 +4,6 @@ import { Clock } from "./components/ClockBtn";
 import { WebShortcutLinksButton, AddNewWebShortcutLinkButton } from "./components/WebShortcutLinksBtn";
 import { PopupMenu, PopupMenu_Mini } from "./components/PopupMenus";
 
-// how to import all the states from the AppStates.jsx file?
-// import {menuButtonOn, webshortcutslinksButtonOn} from "./AppStates.jsx";
-
-// import * as AppStates from "./AppStates.jsx";
-// import { menuButtonOn, set_MenuButtonOn, webshortcutslinksButtonOn, set_WebshortcutslinksButtonOn, ModalOpen, set_ModalOpen, isMenu_SettingsOpen, set_MenuSettingsOpen, isMenu_TodoOpen, set_MenuTodoOpen, isMenu_ShortcutOpen, set_MenuShortcutOpen, isMenu_GoogleAppsOpen, set_MenuGoogleAppsOpen} from "./AppStates";
-
-// import { ModalWindowUI } from "./sections/ModalWindowUI";
-// import useAppStates from './AppStates';
-
-//  const {
-//     menuButtonOn,
-//     set_MenuButtonOn,
-//     webshortcutslinksButtonOn,
-//     set_WebshortcutslinksButtonOn,
-//     ModalOpen,
-//     set_ModalOpen,
-//     isMenu_SettingsOpen,
-//     set_MenuSettingsOpen,
-//     isMenu_TodoOpen,
-//     set_MenuTodoOpen,
-//     isMenu_ShortcutOpen,
-//     set_MenuShortcutOpen,
-//     isMenu_GoogleAppsOpen,
-//     set_MenuGoogleAppsOpen,
-//     isAddNewWebShortcutOpen,
-//     set_AddNewWebShortcutOpen
-//   } = useAppStates();
-
 
 function App() {
 
