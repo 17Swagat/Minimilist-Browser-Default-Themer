@@ -22,7 +22,7 @@ export function Clock() {
   }, 1000);
 
   return (
-    <div className="w-[210px] h-[70px] text-white text-4xl font-bold flex justify-center items-center bg-amber-600 rounded-2xl">
+    <div className="w-[220px] h-[70px] p-5 text-white text-4xl font-bold flex justify-center items-center bg-amber-600 rounded-2xl">
       {getCurrentTime()}
     </div>
   );
