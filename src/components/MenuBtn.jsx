@@ -13,7 +13,7 @@ export function MenuBtn({ btnName, isVisible, color, transitionAngle, onclick=()
             id={btnName}
             style={style}
             className={
-        `size-full absolute z-4 rounded-full flex justify-center items-center  ${isVisible ? `bg-${color}` : `bg-transparent`} `
+        `size-full absolute z-4 rounded-full flex justify-center items-center  ${isVisible ? `${color}` : `bg-transparent`} `
     }
             onClick={onclick}  // Example click handler
             // onClick={() => console.log(`${btnName} clicked`)}  // Example click handler
