@@ -1,6 +1,26 @@
-export function WebShortcutLinksButton() {
+export function WebShortcutLinksButton(
+    key_,
+    siteName = '', 
+    siteUrl = '', 
+    siteFavicon = '') {
+
+    const openUrlInNewTab = (url) =>{
+        window.open(url, '_blank', 'noopener', 'noreferrer');
+    }
+
     return (
-        <div className="w-[100px] h-[100px] rounded-2xl bg-green-300"></div>
+        <div key={key_} className="w-[100px] h-[100px] rounded-2xl bg-green-300" onClick={()=>openUrlInNewTab(siteUrl)}>
+            
+            {/* FavIcon Website */}
+            <div className="w-full h-2/3 bg-amber-500">
+                <img src={siteFavicon} alt={``} className="w-full h-full object-cover " />
+            </div>
+            
+            {/* Website Name */}
+            <div className="w-full h-1/3 bg-amber-900">
+                <span className="text-white">{siteName}</span>
+            </div>
+        </div>
     );
 }
 

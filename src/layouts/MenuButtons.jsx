@@ -1,5 +1,5 @@
 // components/MenuButtons.jsx
-import { MenuBtn } from "./MenuBtn";
+import { MenuBtn } from "../components/MenuBtn";
 
 export default function MenuButtons({
   menuButtonOn, set_MenuButtonOn,

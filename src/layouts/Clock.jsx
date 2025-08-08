@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Clock() {
   const [time, setTime] = useState('');
@@ -9,20 +9,26 @@ export function Clock() {
     let minutes = now.getMinutes();
     let seconds = now.getSeconds();
     let ampm = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12;
     hours = hours ? hours : 12; // the hour '0' should be '12'
     minutes = minutes < 10 ? "0" + minutes : minutes;
+    // seconds = seconds < 10 ? "0" + seconds : seconds;
     const time = hours + ":" + minutes + ":" + seconds + " " + ampm;
     return time;
   };
 
-  // Setting Time Each Second
-  setInterval(() => {
-    setTime(getCurrentTime());
-  }, 1000);
+  
+  useEffect(()=>{
+    // Setting Time Each Second
+    const timer = setInterval(() => {
+      setTime(getCurrentTime());
+    }, 1000);
+
+    return () => clearInterval(timer);
+
+  }, []);
 
   return (
-    <div className="w-[220px] h-[70px] p-5 text-white text-4xl font-bold flex justify-center items-center bg-amber-600 rounded-2xl">
+    <div className="w-[220px] h-[70px] p-5 text-white text-3xl font-bold flex justify-center items-center bg-amber-600 rounded-2xl">
       {getCurrentTime()}
     </div>
   );
