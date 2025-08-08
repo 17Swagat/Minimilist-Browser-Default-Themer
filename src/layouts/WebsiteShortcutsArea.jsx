@@ -58,22 +58,28 @@ export default function WebsiteShortcuts({
 
             {/* Loads the Saved-Sites */}
             {/* ✅ */}
-            {/* {shortcuts.map((shortcut, index) =>{
-              console.log(shortcut.favIcon)
-              console.log(shortcut.siteName)
-              console.log(shortcut.siteURL)
-            })} */}
-            {/* // 2.4 */}
             {shortcuts.map((shortcut, index) => (
+              // 📌
+              // shortcut.favIcon
+              // shortcut.siteName
+              // shortcut.siteUrl
 
               //2.3
               <div
+                onClick={()=>{
+                  window.open(
+                    shortcut.siteUrl, 
+                    '_blank',
+                    'noopener,noreferrer'
+                  );
+                }}
                 key={index}
                 className="w-[100px] h-[100px] rounded-2xl bg-green-300 flex flex-col items-center justify-center cursor-pointer">
                   <img src={shortcut.favIcon} alt="favicon" width={16} height={16} />
-                  <a href={shortcut.siteURL} target="_blank" rel="noreferrer">
+                  {shortcut.siteName}
+                  {/* <a href={shortcut.siteUrl} target="_blank" rel="noreferrer">
                     {shortcut.siteName}
-                  </a>
+                  </a> */}
               </div>
 
             ))
