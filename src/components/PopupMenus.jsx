@@ -18,17 +18,19 @@ export function PopupMenu(
           }}
         >
           {/* Menu Heading */}
-          <h1 className="text-white text-2xl font-bold p-3">{menuName}</h1>
-
-          {/* Close Button */}
-          <CloseButton
-            onClick={(e) => {
-              e.stopPropagation();
-              modalVisibility_func(!isModalOpen_state);
-              menuState_func(!menuState);
-              // setModalOpen((prev) => !prev);
-            }}
+          <div className="flex">
+            <h1 className="text-white text-2xl font-bold p-3">{menuName}</h1>
+            {/* Close Button */}
+            <CloseButton
+              onClick={(e) => {
+                e.stopPropagation();
+                modalVisibility_func(!isModalOpen_state);
+                menuState_func(!menuState);
+                // setModalOpen((prev) => !prev);
+              }}
           />
+
+          </div>
 
           {/* Menu Content */}
           <div className="w-full h-full bg-green-600">{menuBody}</div>

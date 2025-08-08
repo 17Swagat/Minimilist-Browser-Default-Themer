@@ -11,14 +11,13 @@ export default function App() {
     <div
       id="mainScreen"
       // className="flex justify-center items-center"
-      className="flex justify-center items-center h-[100vh] bg-gray-800"
+      className="flex justify-center items-center h-[100vh] bg-gray-800 font-GFont-Protest-Guerrilla tracking-wide"
       // style={{ backgroundColor: "#1c0353ff", height: "100vh" }}
       // style={{ backgroundColor: "#1c0353ff", height: "100vh" }}
       onClick={() => {
         if (states.menuButtonOn) states.set_MenuButtonOn(false);
         if (states.webshortcutslinksButtonOn) states.set_WebshortcutslinksButtonOn(false);
-      }}
-    >
+      }}>
       <Clock />
       <ModalMenus {...states} />
       <MenuButtons {...states} />

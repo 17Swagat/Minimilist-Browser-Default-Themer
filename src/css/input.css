@@ -1,1 +1,13 @@
+@font-face {
+  font-family: 'GFont_ProtestGuerrilla';
+  src: url('../assets/fonts/Protest_Guerrilla/ProtestGuerrilla-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import "tailwindcss";
+
+@theme {
+    --font-GFont-Protest-Guerrilla: GFont_ProtestGuerrilla, "Arial", "Helvetica", "sans-serif";
+}
