@@ -1,9 +1,6 @@
 // components/WebsiteShortcuts.jsx
 import { useState, useEffect } from "react";
 import { WebShortcutLinksButton, AddNewWebShortcutLinkButton } from "../components/WebShortcutLinksBtn";
-// import { loadShortcuts } from "../utils/loadShortcuts";
-
-import { saveShortcut } from "../utils/saveShortcuts";
 import { loadShortcuts } from "../utils/loadShortcuts";
 
 export default function WebsiteShortcuts({
@@ -27,29 +24,13 @@ export default function WebsiteShortcuts({
     loadShortcuts(setShortcuts);
   }, []);
 
-  // TODO: Might have to remove `handleSave` function as this component will not 
-  //       handle tasks related to saving shortcuts.
-  //       Only Displaying the saved ones.
-  // CODE:=>
-  // const handleSave = () => {
-  //   if (!name || !link) return;
-
-  //   const favicon = getFaviconUrl(link);
-  //   const shortcutData = { name, link, favicon };
-
-  //   saveShortcut(shortcutData, () => {
-  //     setShortcuts((prev) => [...prev, shortcutData]);
-  //     setName("");
-  //     setLink("");
-  //   });
-  // };
   /************************************************************************/
 
   return (
-    
+
     // WebShortcuts Button [Canvas] (On top of which buttons are present)
     <div className="bg-red-500 w-25 h-25 text-white absolute bottom-3 left-3 flex items-center justify-center z-1">
-      
+
       {/* (Button): WebShortCut-Button */}
       <div
         className="w-[100%] h-[100%] bg-amber-300 rounded-full absolute z-5
@@ -76,48 +57,28 @@ export default function WebsiteShortcuts({
             />
 
             {/* Loads the Saved-Sites */}
-
             {/* ✅ */}
             {/* {shortcuts.map((shortcut, index) =>{
               console.log(shortcut.favIcon)
               console.log(shortcut.siteName)
               console.log(shortcut.siteURL)
             })} */}
-
-
             {/* // 2.4 */}
             {shortcuts.map((shortcut, index) => (
 
-           //2.3
-           <div
-          key={index}
-          className="w-[100px] h-[100px] rounded-2xl bg-green-300 flex flex-col items-center justify-center cursor-pointer"
-        >
-          <img src={shortcut.favIcon} alt="favicon" width={16} height={16} />
-          <a href={shortcut.siteURL} target="_blank" rel="noreferrer">
-            {shortcut.siteName}
-          </a>
-        </div>
+              //2.3
+              <div
+                key={index}
+                className="w-[100px] h-[100px] rounded-2xl bg-green-300 flex flex-col items-center justify-center cursor-pointer">
+                  <img src={shortcut.favIcon} alt="favicon" width={16} height={16} />
+                  <a href={shortcut.siteURL} target="_blank" rel="noreferrer">
+                    {shortcut.siteName}
+                  </a>
+              </div>
 
-          // 2.2
-          // <div key={index} className="w-[100px] h-[100px] rounded-2xl bg-green-300 flex flex-col items-center justify-center cursor-pointer">
-          //   <img src={shortcut.favicon} alt="favicon" width={16} height={16} />
-          //   <a href={shortcut.link} target="_blank" rel="noreferrer">
-          //     {shortcut.name}
-          //   </a>
-          // </div>
+            ))
 
-          // 2.1
-          //   <WebShortcutLinksButton
-          //     key={index}
-          //     siteName={shortcut.name}
-          //     siteUrl={shortcut.link}
-          //     siteFavicon={shortcut.favicon}
-          // />
-
-        ))
-        
-        }
+            }
 
 
 

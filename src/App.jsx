@@ -11,7 +11,7 @@ export default function App() {
     <div
       id="mainScreen"
       // className="flex justify-center items-center"
-      className="flex justify-center items-center h-[100vh] bg-pink-400"
+      className="flex justify-center items-center h-[100vh] bg-gray-800"
       // style={{ backgroundColor: "#1c0353ff", height: "100vh" }}
       // style={{ backgroundColor: "#1c0353ff", height: "100vh" }}
       onClick={() => {
