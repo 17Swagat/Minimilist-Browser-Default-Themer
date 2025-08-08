@@ -55,7 +55,7 @@ export default function ModalMenus({
           // 3. Save Site Name & Link (Data-Persists)
           const shortcutData = {siteName, siteUrl, favIcon};
           saveShortcut(shortcutData, ()=>{
-            console.log(`Shortcut saved : ${shortcutData}`)});
+            console.log(`Shortcut saved:${shortcutData}`)});
 
         }}/>
       
