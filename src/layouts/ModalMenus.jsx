@@ -1,8 +1,9 @@
 // components/ModalMenus.jsx
+import { appStorageStates } from "../app_storage_states";
 import { PopupMenu, PopupMenu_Mini } from "../components/PopupMenus";
 import { getFaviconUrl } from "../utils/getFavicon";
 import { saveShortcut } from "../utils/saveShortcuts";
-import {AddShortcut_Body} from "./sub_layouts/AddWebShortcut_body";
+import {AddWebShortcut_Body} from "./sub_layouts/AddWebShortcut_body";
 
 export default function ModalMenus({
   ModalOpen, set_ModalOpen,
@@ -12,6 +13,9 @@ export default function ModalMenus({
   isMenu_GoogleAppsOpen, set_MenuGoogleAppsOpen,
   isAddNewWebShortcutOpen, set_AddNewWebShortcutOpen
 }) {
+
+  const appStorageState = appStorageStates();
+
   return (
     <div className={ModalOpen ? "bg-zinc-800 w-full h-full absolute" : "bg-transparent w-full h-full absolute -z-10"} onClick={(e) => {
       e.stopPropagation();
@@ -44,7 +48,7 @@ export default function ModalMenus({
       {/* Add Shortcut Menu */}
       {isAddNewWebShortcutOpen && 
       PopupMenu_Mini(set_ModalOpen, ModalOpen, set_AddNewWebShortcutOpen, isAddNewWebShortcutOpen, "ADD SHORTCUT", 
-        <AddShortcut_Body onButtonClick={(data)=>{
+        <AddWebShortcut_Body onButtonClick={(data)=>{
           // 1. Get Site favicon
           const siteName = data.name;
           const siteUrl = data.url;
@@ -54,9 +58,18 @@ export default function ModalMenus({
 
           // 3. Save Site Name & Link (Data-Persists)
           const shortcutData = {siteName, siteUrl, favIcon};
-          saveShortcut(shortcutData, ()=>{
-            console.log(`Shortcut saved:${shortcutData}`)});
+          
+          // Saving Shortcuts [State Update Happens Inside the function]
+          saveShortcut(shortcutData).then(
+            (result) =>{
+              appStorageStates.setState_userSavedWebLinks(result)
 
+            }
+          )
+          
+          // Turning Off the Modal Windows
+          set_AddNewWebShortcutOpen(false);
+          set_ModalOpen(false);
         }}/>
       
     )}

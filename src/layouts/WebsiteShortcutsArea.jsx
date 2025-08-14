@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { WebShortcutLinksButton, AddNewWebShortcutLinkButton } from "../components/WebShortcutLinksBtn";
 import { loadShortcuts } from "../utils/loadShortcuts";
+import {appStorageStates} from '../app_storage_states'
 
 export default function WebsiteShortcuts({
   webshortcutslinksButtonOn, set_WebshortcutslinksButtonOn,
@@ -16,13 +17,47 @@ export default function WebsiteShortcuts({
 
   // Retrieving saved shortcuts :=>
   /************************************************************************/
-  // const [name, setName] = useState("");
-  // const [link, setLink] = useState("");
-  const [shortcuts, setShortcuts] = useState([]);
+  // const [shortcuts, setShortcuts] = useState([]);
+  // const appStorageState = appStorageStates();
+  // let display_shortcuts_func = async () => {
+  //   try {
+  //     const { webShortcuts = [] } = await chrome.storage.local.get("webShortcuts");
+  //     return webShortcuts;
+  //   }
+  //   catch(error){
+  //     console.error("Failed to load shortcuts:", error);
+  //     return [];
+  //   }
+  // }
+
+
+    const [shortcuts, setShortcuts] = useState([]);
 
   useEffect(() => {
-    loadShortcuts(setShortcuts);
-  }, []);
+    const loadShortcuts = async () => {
+      try {
+        const { webShortcuts = [] } = await chrome.storage.local.get("webShortcuts");
+        setShortcuts(webShortcuts);
+      } catch (error) {
+        console.error("Failed to load shortcuts:", error);
+        setShortcuts([]);
+      }
+    };
+    
+
+    loadShortcuts();
+  }, [appStorageStates.state_userSavedWebLinks]);
+  ///////////////////////////////////////////////////////////////
+
+  // let display_web_shortcuts = display_shortcuts_func();
+
+  // useEffect(()=>{
+  //   // display_web_shortcuts = display_shortcuts_func();
+  // }, [appStorageState.state_userSavedWebLinks])
+
+  // useEffect(() => {
+  //   loadShortcuts(appStorageState.setState_userSavedWebLinks);
+  // }, []);
 
   /************************************************************************/
 
@@ -47,17 +82,22 @@ export default function WebsiteShortcuts({
             <AddNewWebShortcutLinkButton
               onClick={() => {
                 set_WebshortcutslinksButtonOn(false);
-                set_ModalOpen(true);
                 set_MenuSettingsOpen(false);
                 set_MenuTodoOpen(false);
                 set_MenuShortcutOpen(false);
                 set_MenuGoogleAppsOpen(false);
+                // Setting True:
+                set_ModalOpen(true);
                 set_AddNewWebShortcutOpen(true);
               }}
             />
 
             {/* Loads the Saved-Sites */}
             {/* ✅ */}
+            {/* {shortcuts.map((shortcut, index) => ( */}
+            {/* {display_web_shortcuts.map((shortcut, index) => ( */}
+            {/* // {appStorageState.state_userSavedWebLinks.map((shortcut, index) => ( */}
+            {/* {appStorageState.state_userSavedWebLinks.map((shortcut, index) => ( */}
             {shortcuts.map((shortcut, index) => (
               // 📌
               // shortcut.favIcon

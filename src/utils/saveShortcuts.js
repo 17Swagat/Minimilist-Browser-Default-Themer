@@ -1,3 +1,4 @@
+import { appStorageStates } from "../app_storage_states";
 // DeepSeek:
 export async function saveShortcut(shortcutData, callback) {
   try {
@@ -9,9 +10,13 @@ export async function saveShortcut(shortcutData, callback) {
     
     // Save back to storage
     await chrome.storage.local.set({ webShortcuts: updatedShortcuts });
+
     
     console.log("Shortcut saved:", shortcutData);
     callback?.(); // Only call if callback exists
+
+    return updatedShortcuts;
+
   } catch (error) {
     console.error("Failed to save shortcut:", error);
   }

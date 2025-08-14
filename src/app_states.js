@@ -1,4 +1,3 @@
-// hooks/useAppStates.js
 import { useState } from "react";
 
 export function useAppStates() {

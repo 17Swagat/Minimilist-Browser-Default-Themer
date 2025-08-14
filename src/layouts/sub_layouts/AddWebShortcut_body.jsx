@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-export function AddShortcut_Body({onButtonClick}) {
+export function AddWebShortcut_Body({onButtonClick}) {
   const siteNameRef = useRef();
   const siteUrlRef = useRef();
 
