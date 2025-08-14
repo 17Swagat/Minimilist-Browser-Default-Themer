@@ -6,12 +6,12 @@ import { saveShortcut } from "../utils/saveShortcuts";
 import {AddWebShortcut_Body} from "./sub_layouts/AddWebShortcut_body";
 
 export default function ModalMenus({
-  ModalOpen, set_ModalOpen,
-  isMenu_SettingsOpen, set_MenuSettingsOpen,
-  isMenu_TodoOpen, set_MenuTodoOpen,
-  isMenu_ShortcutOpen, set_MenuShortcutOpen,
-  isMenu_GoogleAppsOpen, set_MenuGoogleAppsOpen,
-  isAddNewWebShortcutOpen, set_AddNewWebShortcutOpen
+  // ModalOpen, set_ModalOpen,
+  // isMenu_SettingsOpen, set_MenuSettingsOpen,
+  // isMenu_TodoOpen, set_MenuTodoOpen,
+  // isMenu_ShortcutOpen, set_MenuShortcutOpen,
+  // isMenu_GoogleAppsOpen, set_MenuGoogleAppsOpen,
+  // isAddNewWebShortcutOpen, set_AddNewWebShortcutOpen
 }) {
 
   const appStorageState = appStorageStates();

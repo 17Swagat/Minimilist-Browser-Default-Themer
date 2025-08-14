@@ -208,23 +208,8 @@
   .absolute {
     position: absolute;
   }
-  .top-0 {
-    top: calc(var(--spacing) * 0);
-  }
   .top-1\/2 {
     top: calc(1/2 * 100%);
-  }
-  .top-2 {
-    top: calc(var(--spacing) * 2);
-  }
-  .right-0 {
-    right: calc(var(--spacing) * 0);
-  }
-  .right-2 {
-    right: calc(var(--spacing) * 2);
-  }
-  .right-2\.5 {
-    right: calc(var(--spacing) * 2.5);
   }
   .right-3 {
     right: calc(var(--spacing) * 3);
@@ -262,9 +247,6 @@
   .mt-1 {
     margin-top: calc(var(--spacing) * 1);
   }
-  .mb-1 {
-    margin-bottom: calc(var(--spacing) * 1);
-  }
   .flex {
     display: flex;
   }
@@ -284,14 +266,8 @@
   .h-25 {
     height: calc(var(--spacing) * 25);
   }
-  .h-\[10\%\] {
-    height: 10%;
-  }
   .h-\[15\%\] {
     height: 15%;
-  }
-  .h-\[20\%\] {
-    height: 20%;
   }
   .h-\[30px\] {
     height: 30px;
@@ -415,23 +391,8 @@
   .rounded-2xl {
     border-radius: var(--radius-2xl);
   }
-  .rounded-\[5px\] {
-    border-radius: 5px;
-  }
   .rounded-\[7px\] {
     border-radius: 7px;
-  }
-  .rounded-\[8px\] {
-    border-radius: 8px;
-  }
-  .rounded-\[9px\] {
-    border-radius: 9px;
-  }
-  .rounded-\[10px\] {
-    border-radius: 10px;
-  }
-  .rounded-\[20px\] {
-    border-radius: 20px;
   }
   .rounded-full {
     border-radius: calc(infinity * 1px);
@@ -551,27 +512,12 @@
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
   }
-  .tracking-normal {
-    --tw-tracking: var(--tracking-normal);
-    letter-spacing: var(--tracking-normal);
-  }
-  .tracking-tight {
-    --tw-tracking: var(--tracking-tight);
-    letter-spacing: var(--tracking-tight);
-  }
   .tracking-wide {
     --tw-tracking: var(--tracking-wide);
     letter-spacing: var(--tracking-wide);
   }
-  .tracking-widest {
-    --tw-tracking: var(--tracking-widest);
-    letter-spacing: var(--tracking-widest);
-  }
   .text-black {
     color: var(--color-black);
-  }
-  .text-red-900 {
-    color: var(--color-red-900);
   }
   .text-white {
     color: var(--color-white);
@@ -588,11 +534,6 @@
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
-  }
-  .active\:bg-red-600 {
-    &:active {
-      background-color: var(--color-red-600);
-    }
   }
   .active\:bg-red-700 {
     &:active {
