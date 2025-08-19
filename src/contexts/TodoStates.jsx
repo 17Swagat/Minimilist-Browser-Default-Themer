@@ -1,10 +1,10 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const AppTodoStateContext = createContext({
     todos: [
         {
             id: 1,
-            content: 'This is where you will write your Todos',
+            content: 'Template...',
             completed: false
         }
     ],
@@ -17,26 +17,26 @@ export const AppTodoStateContext = createContext({
 export function AppTodoStateContextProvider({children}){
 
     const [todos, setTodos] = useState([
-        {
-            id: 1,
-            content: '1 This is where you will write your Todos',
-            completed: false
-        },
-        {
-            id: 2,
-            content: '2 This is where you will write your Todos',
-            completed: false
-        },
-        {
-            id: 3,
-            content: '3 This is where you will write your Todos',
-            completed: false
-        },
-        {
-            id: 4,
-            content: '4 This is where you will write your Todos',
-            completed: false
-        }
+        // {
+        //     id: 1,
+        //     content: '1 This is where you will write your Todos',
+        //     completed: false
+        // },
+        // {
+        //     id: 2,
+        //     content: '2 This is where you will write your Todos',
+        //     completed: false
+        // },
+        // {
+        //     id: 3,
+        //     content: '3 This is where you will write your Todos',
+        //     completed: false
+        // },
+        // {
+        //     id: 4,
+        //     content: '4 This is where you will write your Todos',
+        //     completed: false
+        // }
     ])
     
     const addTodo = (todoContent)=>{
@@ -69,6 +69,20 @@ export function AppTodoStateContextProvider({children}){
 
     const toggleComplete= (id)=>{
     }
+
+    // Local-Storage Saving:=>
+    // [Retreving Data]
+    useEffect(()=>{
+        const todos_ = JSON.parse(localStorage.getItem('TODOS'))
+        if (todos_ && (todos_.length > 0)) {
+            setTodos(todos_)
+        }
+    }, [])
+
+    // [Saving Data]
+    useEffect(()=>{
+        localStorage.setItem('TODOS', JSON.stringify(todos))
+    },[todos])
     
     const value = {
         todos, 

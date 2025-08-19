@@ -70,7 +70,7 @@ function TodoMenu(){
 
 
         {/* Todo List */}
-        <div className=" overflow-y-auto  h-[80%]">
+        <div className=" overflow-y-auto flex flex-col gap-2 h-[80%]">
           
           {todos.map((todo_item, index)=>{
             return <TodoItem todo_item={todo_item} key={todo_item.id} />
