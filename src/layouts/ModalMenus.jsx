@@ -5,6 +5,7 @@ import { useAppStateContext } from "../contexts/AppStates";
 import { getFaviconUrl } from "../utils/getFavicon";
 import { saveShortcut } from "../utils/saveShortcuts";
 import { AddWebShortcut_Body } from "./sub_layouts/AddWebShortcut_body";
+import AddWebShortcutMenu from "./menus/AddWebShortcut/AddWebShortcut";
 
 import gicon_search from "../assets/icons/google_apps/google.png";
 import gicon_mail from "../assets/icons/google_apps/gmail.png";
@@ -124,15 +125,23 @@ export default function ModalMenus() {
 
       {/* Add WebShortcut Shortcut Menu */}
       {/* 0.2 */}
-      <PopupMenu_Mini 
+      <AddWebShortcutMenu/>
+      {/* <PopupMenu_Mini 
         menuState={addWebShortcutLinkMenuOpen} 
         toggleMenuStateFunc = {toggleWebShortcutLinkMenu}
         menuName = "Add Website Shortcut"
-        menuBody = {<AddWebShortcut_Body onButtonClick={()=>{}}/>}
-      />
+        menuBody = {
+          <AddWebShortcut_Body onButtonClick={
+            ()=>{
+              console.log('Hello World')
+            }
+          }/>
+        }
+      /> */}
 
       {/* 0.1: */}
-      {/* {addWebShortcutLinkMenuOpen &&
+      {/* 
+      {addWebShortcutLinkMenuOpen &&
         PopupMenu_Mini(
           ()=>{},
           true,
