@@ -3,6 +3,9 @@ import { Clock } from "./layouts/Clock";
 import MenuButtons from "./layouts/MenuButtons";
 import { AppStateContextProvider, useAppStateContext } from "./contexts/AppStates";
 import ModalMenus from './layouts/ModalMenus'
+import WebsiteShortcuts from './layouts/WebsiteShortcutsArea'
+import { WebShortcutLinksButton } from "./components/WebShortcutLinksBtn";
+
 
 export default function App() {
   return (
@@ -29,6 +32,7 @@ function MainScreen() {
       <Clock />
       <ModalMenus />
       <MenuButtons />
+      <WebsiteShortcuts/>
       {/* <WebsiteShortcuts {...states} /> */}
     </div>
   );

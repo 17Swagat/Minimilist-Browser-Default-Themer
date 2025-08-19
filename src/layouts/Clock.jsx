@@ -5,7 +5,7 @@ export function Clock() {
 
   let getCurrentTime = () => {
     const now = new Date();
-    let hours = now.getHours();
+    let hours = now.getHours() % 12;
     let minutes = now.getMinutes();
     let seconds = now.getSeconds();
     let ampm = hours >= 12 ? "PM" : "AM";
