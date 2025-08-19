@@ -1,11 +1,18 @@
 // new:
 import React, { useState } from "react";
 // import { useTodo } from "../contexts/TodoContext";
-// import { useTodoStateContext } from "../../../contexts/TodoStates";
+import { useTodoStateContext } from "../../../contexts/TodoStates";
 export default function TodoItem({ todo_item }) {
-  const [todoContent, setTodoContent] = useState(todo_item?.content || '');
-  const [isEditable, setIsEditable] = useState(false);
-  const [isComplete, setIsComplete] = useState(false);
+    const [todoContent, setTodoContent] = useState(todo_item?.content || '');
+    const [isEditable, setIsEditable] = useState(false);
+    const [isComplete, setIsComplete] = useState(false);
+    const {
+        todos, 
+        addTodo, 
+        updateTodo, 
+        deleteTodo,
+        toggleComplete
+    } = useTodoStateContext()
 
   return (
     <div className="flex items-center bg-gray-300 rounded-lg shadow-md p-4 hover:shadow-lg transition duration-200">
@@ -18,89 +25,24 @@ export default function TodoItem({ todo_item }) {
       />
       <button
         className="ml-3 bg-cyan-500 text-white px-4 py-2 rounded-lg hover:bg-cyan-600 transition duration-300 active:scale-95 select-none font-medium"
-        onClick={() => setIsEditable(!isEditable)}
+        onClick={() => {
+            if (isEditable){
+                updateTodo(todo_item.id, todoContent)
+            }
+            setIsEditable(prev => {
+                return !prev;
+            })
+        }}
       >
-        Edit
+        {isEditable ? 'Save' : 'Edit'}
       </button>
-      <button className="ml-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300 active:scale-95 select-none font-medium">
+      <button 
+        className="ml-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300 active:scale-95 select-none font-medium"
+        onClick={()=>{
+            deleteTodo(todo_item.id)
+        }}>
         Delete
       </button>
     </div>
   );
 }
-
-
-// Old:
-// import React, { useState } from "react";
-// // import { useTodo } from "../contexts/TodoContext";
-// // import { useTodoStateContext } from "../../../contexts/TodoStates";
-
-// export default function TodoItem(
-//     {todo_item}
-// ) {
-
-//     // const [todoContent, setTodoContent] = useState(todo['content']);
-//     const [todoContent, setTodoContent] = useState('')
-//     const [isEditable, setIsEditable] = useState(false)
-//     const [isComplete, setIsComplete] = useState(false)
-  
-//     return (
-//     <>
-
-//     <div 
-//               key={todo_item.id} 
-//               className="flex items-center bg-gray-300 rounded-lg shadow-md p-4 hover:shadow-lg transition duration-200">
-
-//                 <input
-//                   type="text"
-//                   className="flex-1 p-3 text-gray-800 bg-gray-50 rounded-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 overflow-y-auto"
-//                   value={todos[index]['content']}
-//                   readOnly={true}
-//                   onChange={(e)=>{
-//                   }}
-//                 />
-
-//                 <button className="ml-3 bg-cyan-500 text-white px-4 py-2 rounded-lg hover:bg-cyan-600 transition duration-300 active:scale-95 select-none font-medium" 
-//                   onClick={(e)=>{}}
-//                 >
-//                   Edit
-//                 </button>
-//                 <button className="ml-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300 active:scale-95 select-none font-medium">
-//                   Delete
-//                 </button>
-//             </div>
-
-
-
-//       {/* <div
-//         // key={todo.id}
-//         className="flex items-center bg-gray-300 rounded-lg shadow-md p-4 hover:shadow-lg transition duration-200"
-//       >
-//         <input
-//           type="text"
-//           className="flex-1 p-3 text-gray-800 bg-gray-50 rounded-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 overflow-y-auto"
-//         //   value={todo.content}
-//           readOnly={!isEditable}
-//           onChange={(e) => {}}
-//         />
-
-//         <button
-//           className="ml-3 bg-cyan-500 text-white px-4 py-2 rounded-lg hover:bg-cyan-600 transition duration-300 active:scale-95 select-none font-medium"
-//           onClick={(e) => {
-//             console.log('Edit Clicked')
-//           }}
-//         >
-//           Edit
-//         </button>
-//         <button 
-//             className="ml-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300 active:scale-95 select-none font-medium"
-//             onClick={(e)=>{
-//                 console.log('Delete Clicked')
-//             }}
-//         >
-//           Delete
-//         </button>
-//       </div> */}
-//     </>
-//   );
-// }

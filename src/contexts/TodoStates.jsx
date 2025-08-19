@@ -38,6 +38,7 @@ export function AppTodoStateContextProvider({children}){
             completed: false
         }
     ])
+    
     const addTodo = (todoContent)=>{
         // For Id:
         let now = new Date()
@@ -48,6 +49,18 @@ export function AppTodoStateContextProvider({children}){
     }
 
     const updateTodo = (id, todoContent)=>{
+        setTodos(prev => prev.map(
+            (item => {
+                if (item.id === id) {
+                    item.content = todoContent;
+                    return item;
+                }
+                return item;
+
+            })
+        )
+    )
+        
     }
 
     const deleteTodo = (id)=>{
@@ -55,7 +68,6 @@ export function AppTodoStateContextProvider({children}){
     }
 
     const toggleComplete= (id)=>{
-
     }
     
     const value = {
