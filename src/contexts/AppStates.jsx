@@ -29,14 +29,8 @@ export function AppStateContextProvider({ children }) {
   const [shortcutsMenuOpen, setShortcutsMenuOpen] = useState(false);
   const [googleAppsMenuOpen, setGoogleAppsMenuOpen] = useState(false);
   const [todoMenuOpen, setTodoMenuOpen] = useState(false);
-
-  const toggleMenuButton = () => setMenuButtonOn(!menuButtonOn);
-  const toggleWebShortcutsButton = () => setWebShortcutLinksOpen(!webShortcutLinksOpen);
-  const toggleModalWindow = () => setModalWindowOpen(!modalWindowOpen);
-  const toggleSettingsMenu = () => setSettingsMenuOpen(!settingsMenuOpen);
-  const toggleShortcutsMenu = () => setShortcutsMenuOpen(!shortcutsMenuOpen);
-  const toggleGoogleAppsMenu = () => setGoogleAppsMenuOpen(!googleAppsMenuOpen);
-  const toggleTodoMenu = () => setTodoMenuOpen(!todoMenuOpen);
+  
+  
   const closeAllMenus = () => {
     setMenuButtonOn(false);
     setWebShortcutLinksOpen(false);
@@ -46,6 +40,38 @@ export function AppStateContextProvider({ children }) {
     setGoogleAppsMenuOpen(false);
     setTodoMenuOpen(false);
   };
+
+  const toggleMenuButton = () => setMenuButtonOn(!menuButtonOn);
+  const toggleWebShortcutsButton = () => setWebShortcutLinksOpen(!webShortcutLinksOpen);
+  const toggleModalWindow = () => setModalWindowOpen(!modalWindowOpen);
+  
+  const toggleSettingsMenu = () => {
+    closeAllMenus()
+    setModalWindowOpen(prev => !prev)
+    setSettingsMenuOpen(prev => !prev)
+  };
+  
+  const toggleTodoMenu = () => { 
+    closeAllMenus()
+    setModalWindowOpen(prev => !prev)
+    setTodoMenuOpen(prev => !prev)
+  }
+  
+  const toggleShortcutsMenu = () => {
+    closeAllMenus()
+    setModalWindowOpen(prev => !prev)
+    setShortcutsMenuOpen(prev => !prev)
+  }
+
+  const toggleGoogleAppsMenu = () => {
+    closeAllMenus()
+    setModalWindowOpen(prev => !prev)
+    setGoogleAppsMenuOpen(prev => !prev)
+    // if (!modalWindowOpen)
+    //   setModalWindowOpen(true)
+    // setGoogleAppsMenuOpen(!googleAppsMenuOpen);
+  } 
+
 
   const value = {
     menuButtonOn,
@@ -73,40 +99,3 @@ export function useAppStateContext() {
   return useContext(AppStateContext);
 }
 
-
-
-// import { createContext, useContext } from "react";
-
-// // Create a context with a default value
-// export const AppStateContext = createContext({
-    
-//     // Buttons:=>
-//     menuButtonOn: false,
-//     webShortcutLinksOpen: false,
-    
-//     // Menus:=>
-//     modalWindowOpen: false,
-//     settingsMenuOpen: false,
-//     shortcutsMenuOpen: false,
-//     googleAppsMenuOpen: false,
-//     todoMenuOpen: false,
-    
-//     // Functions [Buttons]:
-//     toggleMenuButton: ()=>{},
-//     toggleWebShortcutsButton: ()=>{},
-    
-//     // Functions [Menus]:
-//     toggleModalWindow: ()=>{},
-//     toggleSettingsMenu: ()=>{},
-//     toggleShortcutsMenu: ()=>{},
-//     toggleGoogleAppsMenu: ()=>{},
-//     toggleTodoMenu: ()=>{},
-//     closeAllMenus:()=>{}
-// });
-
-// export const AppStateContextProvider = AppStateContext.Provider
-
-
-// export default function useAppStateContext(){
-//     return useContext(AppStateContext);
-// }
