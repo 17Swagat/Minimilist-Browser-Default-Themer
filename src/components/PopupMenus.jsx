@@ -34,10 +34,9 @@ export function PopupMenu(
                   onClick={(e) => {
                     e.stopPropagation();
                     closeAllMenus()
-                    
                     // toggleMenuStateFunc(!menuState)
-                  }}
-                >
+                  }}>
+               
                   X
                 </div>
 
@@ -56,36 +55,37 @@ export function PopupMenu(
 
 
 export function PopupMenu_Mini(
-  modalVisibility_func, // function to toggle modal visibility
-  isModalOpen_state, // boolean
-  menuState_func, // function to toggle menu state
-  menuState,
+  {menuState,
+  toggleMenuStateFunc,
   menuName,
-  menuBody
+  menuBody}
+
 ) {
+
+  const {modalWindowOpen, toggleModalWindow, closeAllMenus } = useAppStateContext()
+
   return (
     <>
-      {isModalOpen_state && (
+      {(modalWindowOpen && menuState) && (
         <div
-          className="w-1/3 h-1/3 bg-[#5c3facff] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg flex flex-col justify-center items-center z-15"
+          className="w-1/3 h-1/3 bg-[#513e86] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg flex flex-col justify-center items-center z-15"
           onClick={(e) => {
             e.stopPropagation(); // Prevent click from closing the modal
           }}
         >
           {/* Menu Heading */}
-          <div className="bg-yellow-500 w-full flex justify-between items-center p-1 rounded-t-lg">
-            <h1 className="text-white text-2xl font-bold p-3 mt-1">{menuName}</h1>
+          <div className="bg-[#066188] w-full flex justify-between items-center p-1 rounded-t-lg">
+            <h1 className="text-white text-2xl p-3 mt-1">{menuName}</h1>
 
+            {/* Close Menu Button */}
             <div
-              className=" bg-blue-500 p-3.5 rounded-full h-[30px] w-[30px] 
-                flex justify-center items-center 
-                text-white text-2xl font-bold 
-                transition duration-300 ease active:bg-red-700"
+              className=" bg-red-500 p-3.5 rounded-full h-[30px] w-[30px] 
+                flex justify-center items-center  mr-2
+                text-white text-2xl 
+                transition duration-300 ease active:bg-red-700 select-none hover:cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();
-                modalVisibility_func(!isModalOpen_state);
-                menuState_func(!menuState)
-                // setModalOpen((prev) => !prev);
+                closeAllMenus();
               }}
             >
               X
@@ -93,7 +93,7 @@ export function PopupMenu_Mini(
           </div>
 
           {/* Menu Content */}
-          <div className="w-full h-full bg-green-600 flex items-center">
+          <div className="w-full h-full bg-transparent flex items-center">
             {menuBody}
           </div>
         </div>

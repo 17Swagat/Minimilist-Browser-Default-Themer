@@ -5,10 +5,13 @@ export function Clock() {
 
   let getCurrentTime = () => {
     const now = new Date();
-    let hours = now.getHours() % 12;
+    let hours = now.getHours();
+    let ampm = hours >= 12 ? "PM" : "AM"; // variable position matters!!
+    if (hours > 12)
+      hours = hours % 12;
+
     let minutes = now.getMinutes();
     let seconds = now.getSeconds();
-    let ampm = hours >= 12 ? "PM" : "AM";
     hours = hours ? hours : 12; // the hour '0' should be '12'
     minutes = minutes < 10 ? "0" + minutes : minutes;
     // seconds = seconds < 10 ? "0" + seconds : seconds;

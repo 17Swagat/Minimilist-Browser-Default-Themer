@@ -10,6 +10,7 @@ export const AppStateContext = createContext({
   shortcutsMenuOpen: false,
   googleAppsMenuOpen: false,
   todoMenuOpen: false,
+  addWebShortcutLinkMenuOpen: false,
   toggleMenuButton: () => {},
   toggleWebShortcutsButton: () => {},
   toggleModalWindow: () => {},
@@ -17,6 +18,7 @@ export const AppStateContext = createContext({
   toggleShortcutsMenu: () => {},
   toggleGoogleAppsMenu: () => {},
   toggleTodoMenu: () => {},
+  toggleWebShortcutLinkMenu: ()=>{},
   closeAllMenus: () => {},
 });
 
@@ -29,6 +31,7 @@ export function AppStateContextProvider({ children }) {
   const [shortcutsMenuOpen, setShortcutsMenuOpen] = useState(false);
   const [googleAppsMenuOpen, setGoogleAppsMenuOpen] = useState(false);
   const [todoMenuOpen, setTodoMenuOpen] = useState(false);
+  const [addWebShortcutLinkMenuOpen, setAddWebShortcutLinkMenu] = useState(false);
   
   
   const closeAllMenus = () => {
@@ -38,6 +41,7 @@ export function AppStateContextProvider({ children }) {
     setSettingsMenuOpen(false);
     setShortcutsMenuOpen(false);
     setGoogleAppsMenuOpen(false);
+    setAddWebShortcutLinkMenu(false);
     setTodoMenuOpen(false);
   };
 
@@ -72,6 +76,12 @@ export function AppStateContextProvider({ children }) {
     // setGoogleAppsMenuOpen(!googleAppsMenuOpen);
   } 
 
+  const toggleWebShortcutLinkMenu = ()=>{
+    closeAllMenus()
+    setModalWindowOpen(prev => !prev)
+    setAddWebShortcutLinkMenu(prev => !prev)
+  }
+
 
   const value = {
     menuButtonOn,
@@ -81,6 +91,7 @@ export function AppStateContextProvider({ children }) {
     shortcutsMenuOpen,
     googleAppsMenuOpen,
     todoMenuOpen,
+    addWebShortcutLinkMenuOpen,
     toggleMenuButton,
     toggleWebShortcutsButton,
     toggleModalWindow,
@@ -88,6 +99,7 @@ export function AppStateContextProvider({ children }) {
     toggleShortcutsMenu,
     toggleGoogleAppsMenu,
     toggleTodoMenu,
+    toggleWebShortcutLinkMenu,
     closeAllMenus,
   };
 

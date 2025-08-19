@@ -17,7 +17,7 @@ export default function App() {
 
 function MainScreen() {
   
-  const { menuButtonOn, closeAllMenus } = useAppStateContext();
+  const { menuButtonOn,webShortcutLinksOpen, closeAllMenus } = useAppStateContext();
 
   return (
     <div
@@ -26,6 +26,9 @@ function MainScreen() {
       onClick={() => {
         if (menuButtonOn) {
           closeAllMenus();
+        }
+        if (webShortcutLinksOpen) {
+          closeAllMenus()
         }
       }}
     >

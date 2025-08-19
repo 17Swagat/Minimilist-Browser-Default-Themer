@@ -26,6 +26,7 @@ export default function ModalMenus() {
     shortcutsMenuOpen,
     googleAppsMenuOpen,
     todoMenuOpen,
+    addWebShortcutLinkMenuOpen,
     toggleMenuButton,
     toggleWebShortcutsButton,
     toggleModalWindow,
@@ -33,6 +34,7 @@ export default function ModalMenus() {
     toggleShortcutsMenu,
     toggleGoogleAppsMenu,
     toggleTodoMenu,
+    toggleWebShortcutLinkMenu,
     closeAllMenus,
   } = useAppStateContext();
 
@@ -119,23 +121,23 @@ export default function ModalMenus() {
         )
       )}
 
-      {/* #1 */}
-      {/* {PopupMenu(
-        googleAppsMenuOpen,
-        toggleGoogleAppsMenu,
-        "Google Apps",
-        googleAppsMenuOpen && <div>This is Google Apps content</div>
-      )} */}
 
-      {/* Add Shortcut Menu */}
-      {/* {
-      // isAddNewWebShortcutOpen &&
-      webShortcutLinksOpen &&
+      {/* Add WebShortcut Shortcut Menu */}
+      {/* 0.2 */}
+      <PopupMenu_Mini 
+        menuState={addWebShortcutLinkMenuOpen} 
+        toggleMenuStateFunc = {toggleWebShortcutLinkMenu}
+        menuName = "Add Website Shortcut"
+        menuBody = {<AddWebShortcut_Body onButtonClick={()=>{}}/>}
+      />
+
+      {/* 0.1: */}
+      {/* {addWebShortcutLinkMenuOpen &&
         PopupMenu_Mini(
-          set_ModalOpen,
-          ModalOpen,
-          set_AddNewWebShortcutOpen,
-          isAddNewWebShortcutOpen,
+          ()=>{},
+          true,
+          ()=>{},
+          true,
           "ADD SHORTCUT",
           <AddWebShortcut_Body
             onButtonClick={(data) => {
