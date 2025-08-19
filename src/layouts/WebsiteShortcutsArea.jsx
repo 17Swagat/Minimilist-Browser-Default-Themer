@@ -128,8 +128,6 @@ export default function WebsiteShortcuts({
 
 
 
-
-
             {/* <WebShortcutLinksButton siteName="Example Site 1" siteUrl="https://example1.com" siteFavicon = 'https://example1.com/favicon.ico' />
             <WebShortcutLinksButton siteName="Example Site 2" siteUrl="https://example2.com" siteFavicon = 'https://example2.com/favicon.ico' />
             <WebShortcutLinksButton siteName="Example Site 3" siteUrl="https://example3.com" siteFavicon = 'https://example3.com/favicon.ico' /> */}
