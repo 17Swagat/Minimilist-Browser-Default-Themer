@@ -5,9 +5,9 @@ export function AddWebShortcut_Body({onButtonClick}) {
   const siteUrlRef = useRef();
 
   const handleClick = () => {
-    const name= siteNameRef.current.value
+    const webname= siteNameRef.current.value
     const url= siteUrlRef.current.value
-    onButtonClick({name, url})
+    onButtonClick({webname, url})
   };
 
   return (

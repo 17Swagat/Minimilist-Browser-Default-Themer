@@ -2,7 +2,7 @@ import { PopupMenu_Mini } from "../../../components/PopupMenus";
 import {
   useAppStateContext
 } from "../../../contexts/AppStates";
-import { AddWebShortcut_Body } from "../../sub_layouts/AddWebShortcut_body";
+import { AddWebShortcut_Body } from "./AddWebShortcut_body";
 
 export default function AddWebShortcutMenu() {
   const {
@@ -32,8 +32,9 @@ export default function AddWebShortcutMenu() {
       menuName="Add Website Shortcut"
       menuBody={
         <AddWebShortcut_Body
-          onButtonClick={() => {
-            console.log("Hello World");
+          onButtonClick={({webname, url})=>{
+            console.log(webname)
+            console.log(url)
           }}
         />
       }
