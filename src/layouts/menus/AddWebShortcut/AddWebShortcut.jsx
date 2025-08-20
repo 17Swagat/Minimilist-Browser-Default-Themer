@@ -44,7 +44,6 @@ export default function AddWebShortcutMenu() {
                     onButtonClick={({ webname, url }) => {
                         if ((webname.trim() != '') && (url.trim() != '')) {
                             addNewWebLink(webname, url)
-                            console.log(webLinks)
                             closeAllMenus()
                         }
                     }}

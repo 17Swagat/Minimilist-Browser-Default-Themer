@@ -6,6 +6,7 @@ export const SavedWebLinksStateContext = createContext({
             id: 1,
             websiteName: 'Google',
             websiteLink: 'https://www.google.com',
+            // favicon: 'https://www.google.com/s2/favicons?sz=128&domain_url=https://www.google.com',
         }
     ],
 
@@ -15,24 +16,21 @@ export const SavedWebLinksStateContext = createContext({
 
 export function SavedWebLinksStateContextProvider({children}){
     // Concered Values & Functions
-    const [webLinks, setWebLinks] = useState([
-        // {
-        //     id: 1,
-        //     websiteName: 'Google',
-        //     websiteLink: 'https://www.google.com',
-        // }
-    ]);
+    const [webLinks, setWebLinks] = useState([]);
   
-    
     const addNewWebLink = (websiteName, websiteLink)=>{
         // For Id:
         let now = new Date()
-        
         let id = `WEB_LINK_${now.getDate()}/${now.getMonth()}/${now.getFullYear()}/${now.getHours()}/${now.getMinutes()}/${now.getSeconds()}/${now.getMilliseconds()}` // (DD/MM/YY/T_H/T_M/T_S/T_M)
         
         setWebLinks(prev => [
             ...prev, 
-            {id: id, websiteName: websiteName, websiteLink: websiteLink}
+            {
+                id: id, 
+                websiteName: websiteName, 
+                websiteLink: websiteLink
+                // favicon: `https://www.google.com/s2/favicons?sz=128&domain_url=${websiteLink}`
+            }
         ])
     }
     const deleteWebLink = (id)=>{
@@ -42,27 +40,26 @@ export function SavedWebLinksStateContextProvider({children}){
         }))
     }
   
-    //////////////////////////////////////////////////////////////////////////////
     // [Saving & Loading WebShortcut Links From {Browser's Local Storage}]
-    // * [Loading WebShortcuts]
     useEffect(()=>{
+        // [Loading WebShortcuts]
         const saved_web_links = JSON.parse(localStorage.getItem('WEBSHORTCUTS'))
-        // console.log(saved_web_links.length)
         if (saved_web_links && (saved_web_links.length > 0)) {
             setWebLinks(saved_web_links)
         }
     },[])
 
-    // * [Saving Webshortcuts]
     useEffect(()=>{
+        // [Saving Webshortcuts]
         localStorage.setItem('WEBSHORTCUTS', JSON.stringify(webLinks))
     },[webLinks])
 
-    //////////////////////////////////////////////////////////////////////////////
     
-    
-    
-    const value = {webLinks, addNewWebLink, deleteWebLink};
+    const value = {
+        webLinks, 
+        addNewWebLink, 
+        deleteWebLink
+    };
 
     return <SavedWebLinksStateContext.Provider value={value}>
         {children}

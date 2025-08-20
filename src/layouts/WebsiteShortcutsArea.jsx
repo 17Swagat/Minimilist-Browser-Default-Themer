@@ -10,15 +10,12 @@ import { useAppStateContext } from "../contexts/AppStates";
 import { SavedWebLinksStateContextProvider, useSavedWebLinksStateContext } from "../contexts/SavedWebLinksState";
 
 export default function WebsiteShortcuts() {
-  return (
-      <View_WebsiteShortcuts/>
-  );
-}
+//   return (
+//       <View_WebsiteShortcuts/>
+//   );
+// }
 
-function View_WebsiteShortcuts() {
-  // const [shortcuts, setShortcuts] = useState([]);
-
-  // const [webShortcutLinks, setWebShortcutLinks] = useState([]);
+// function View_WebsiteShortcuts() {
 
   const {webLinks, addNewWebLink, deleteWebLink}  = useSavedWebLinksStateContext();
   
@@ -76,17 +73,14 @@ function View_WebsiteShortcuts() {
                 }}
               />
               
-              <div>
-                {/* {webLinks[0].id} */}
-              </div>
 
               {/* Loads the Saved-Sites */}
               {/* ✅ */}
-              {webLinks.map((shortcut, index) => (
-                // 📌
-                // shortcut.favIcon
-                // shortcut.siteName
-                // shortcut.siteUrl
+              {/* // 📌 */}
+              {/* // shortcut.favIcon */}
+              {/* // shortcut.siteName */}
+              {/* // shortcut.siteUrl */}
+              {/* {webLinks.map((shortcut, index) => (
 
                 //2.3
                 <div
@@ -102,19 +96,24 @@ function View_WebsiteShortcuts() {
                 >
                   <img
                     // TODO:
-                    // src={shortcut.favIcon}
                     src = 'https://img.com'
                     alt="favicon"
                     width={16}
                     height={16}
                   />
                   {shortcut.websiteLink}
-                  {/* <a href={shortcut.siteUrl} target="_blank" rel="noreferrer">
-                    {shortcut.siteName}
-                  </a> */}
                 </div>
-              ))}
+              ))} */}
             
+              {webLinks.map((webShortcutItem, index)=>
+                <WebShortcutLinksButton 
+                        key={webShortcutItem.id} 
+                        siteName = {webShortcutItem.websiteName}
+                        siteUrl = {webShortcutItem.websiteLink}
+                        // siteFavicon = {webShortcutItem.favicon} 
+                        />
+              )}
+
             {/* 
               <WebShortcutLinksButton siteName="Example Site 1" siteUrl="https://example1.com" siteFavicon = 'https://example1.com/favicon.ico' />
             <WebShortcutLinksButton siteName="Example Site 2" siteUrl="https://example2.com" siteFavicon = 'https://example2.com/favicon.ico' />
