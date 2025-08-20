@@ -8,16 +8,7 @@ import { loadShortcuts } from "../utils/loadShortcuts";
 import { appStorageStates } from "../app_storage_states";
 import { useAppStateContext } from "../contexts/AppStates";
 
-export default function WebsiteShortcuts({
-  // webshortcutslinksButtonOn,
-  // set_WebshortcutslinksButtonOn,
-  // set_ModalOpen,
-  // set_MenuSettingsOpen,
-  // set_MenuTodoOpen,
-  // set_MenuShortcutOpen,
-  // set_MenuGoogleAppsOpen,
-  // set_AddNewWebShortcutOpen,
-}) {
+export default function WebsiteShortcuts() {
   // const [shortcuts, setShortcuts] = useState([]);
 
   const [webShortcutLinks, setWebShortcutLinks] = useState([]);
@@ -54,7 +45,6 @@ export default function WebsiteShortcuts({
         flex justify-center items-center text-2xl text-black select-none hover:cursor-pointer"
         onClick={(e) => {
           e.stopPropagation();
-          // set_WebshortcutslinksButtonOn(prev => !prev);
           toggleWebShortcutsButton((prev) => !prev);
         }}
       >

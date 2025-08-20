@@ -17,6 +17,7 @@ export const AppTodoStateContext = createContext({
 export function AppTodoStateContextProvider({children}){
 
     const [todos, setTodos] = useState([
+        // [TEMPLATE] :=>
         // {
         //     id: 1,
         //     content: '1 This is where you will write your Todos',

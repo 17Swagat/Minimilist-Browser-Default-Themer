@@ -474,18 +474,6 @@
   .bg-\[\#5c3facff\] {
     background-color: #5c3facff;
   }
-  .bg-\[\#06a4e7\] {
-    background-color: #06a4e7;
-  }
-  .bg-\[\#104a63ff\] {
-    background-color: #104a63ff;
-  }
-  .bg-\[\#107ba8\] {
-    background-color: #107ba8;
-  }
-  .bg-\[\#251f38\] {
-    background-color: #251f38;
-  }
   .bg-\[\#513e86\] {
     background-color: #513e86;
   }
@@ -549,15 +537,6 @@
   .bg-red-500 {
     background-color: var(--color-red-500);
   }
-  .bg-teal-600 {
-    background-color: var(--color-teal-600);
-  }
-  .bg-teal-700 {
-    background-color: var(--color-teal-700);
-  }
-  .bg-teal-800 {
-    background-color: var(--color-teal-800);
-  }
   .bg-teal-900 {
     background-color: var(--color-teal-900);
   }
@@ -569,9 +548,6 @@
   }
   .bg-yellow-400 {
     background-color: var(--color-yellow-400);
-  }
-  .bg-yellow-500 {
-    background-color: var(--color-yellow-500);
   }
   .bg-zinc-800 {
     background-color: var(--color-zinc-800);
@@ -590,9 +566,6 @@
   }
   .p-3\.5 {
     padding: calc(var(--spacing) * 3.5);
-  }
-  .p-4\.5 {
-    padding: calc(var(--spacing) * 4.5);
   }
   .p-5 {
     padding: calc(var(--spacing) * 5);
@@ -641,10 +614,6 @@
   .font-medium {
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
-  }
-  .font-semibold {
-    --tw-font-weight: var(--font-weight-semibold);
-    font-weight: var(--font-weight-semibold);
   }
   .tracking-wide {
     --tw-tracking: var(--tracking-wide);
