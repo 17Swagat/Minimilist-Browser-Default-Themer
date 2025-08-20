@@ -1,7 +1,9 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect, useContext} from 'react';
+import { useSavedWebLinksStateContext } from '../contexts/SavedWebLinksState';
 
 // TODO: "To completely understand what this component is doing."
 export function WebShortcutLinksButton({
+    id = '', // <UseFull for Delete Item>
     siteName = 'Website', 
     siteUrl = 'https://example.com', 
     siteFavicon = null // We'll handle this internally now
@@ -192,6 +194,10 @@ export function WebShortcutLinksButton({
         >
             {/* Main Container */}
             <div className="w-full h-full rounded-2xl bg-gradient-to-br from-white to-gray-50 border border-gray-200 shadow-md group-hover:shadow-lg transition-all duration-300 overflow-hidden">
+
+                {/* Remove Shortcut */}
+                <DeleteButton id={id}/>
+          
                 
                 {/* Favicon Container */}
                 <div className="relative w-full h-16 flex items-center justify-center bg-gradient-to-br from-gray-50 to-white">
@@ -223,7 +229,7 @@ export function WebShortcutLinksButton({
                 
                 {/* Website Name */}
                 <div className="w-full h-8 px-2 flex items-center justify-center bg-gradient-to-r from-gray-700 to-gray-800">
-                    <span className="text-white text-xs font-medium text-center leading-tight truncate">
+                    <span className="text-white text-xs text-center leading-tight truncate">
                         {siteName}
                     </span>
                 </div>
@@ -235,6 +241,48 @@ export function WebShortcutLinksButton({
     );
 }
 
+function DeleteButton({id}){
+    const [showDeletePopup, setDeletePopup] = useState(false)
+    const {deleteWebLink} = useSavedWebLinksStateContext()
+    return <>
+        <div className={
+            `
+            w-5 h-5 rounded-full absolute bg-red-500 top-0.5 right-0.5 z-20 text-white flex justify-center items-center transition duration-300 hover:bg-red-700
+            ${showDeletePopup ? "hidden" : "visible"}
+            `
+        } 
+            onClick={(e)=>{
+                        e.stopPropagation()
+                        setDeletePopup(prev => !prev)
+            }}> X </div>
+        {
+            showDeletePopup && 
+            <div 
+                className='w-[100px] h-[100px] bg-red-500 flex flex-col justify-center items-center select-none' 
+                onClick={(e)=>{e.stopPropagation()}}>
+                <div className='text-2xl'>Delete?</div>
+                <div className='flex  w-full justify-evenly text-[20px] mx-5'>
+                    <div 
+                        className='bg-yellow-700 px-0.5 rounded-[5px]'
+                        onClick={(e)=>{
+                            e.stopPropagation()
+                            deleteWebLink(id)
+                            // setDeletePopup(prev => !prev)
+                            // console.log('DELETE SHORTCUT CODE')
+                        }}>
+                        Yes
+                    </div>
+                    <div className='bg-blue-600 px-0.5 rounded-[5px]'
+                        onClick={(e)=>{
+                            e.stopPropagation()
+                            setDeletePopup(false)
+                        }}> No
+                    </div>
+                </div>
+            </div>        
+        }
+    </>
+}
 
 export function AddNewWebShortcutLinkButton({onClick}) {
     return (
