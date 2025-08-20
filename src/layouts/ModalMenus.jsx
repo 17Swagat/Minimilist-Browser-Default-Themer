@@ -44,7 +44,7 @@ export default function ModalMenus() {
       className={
         // ModalOpen
         modalWindowOpen
-          ? "bg-zinc-800 w-full h-full absolute"
+          ? "bg-[#3d3b3bd4] w-full h-full absolute"
           : "bg-transparent w-full h-full absolute -z-10"
       }
       onClick={(e) => {

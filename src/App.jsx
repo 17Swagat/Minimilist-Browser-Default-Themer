@@ -4,11 +4,7 @@ import MenuButtons from "./layouts/MenuButtons";
 import { AppStateContextProvider, useAppStateContext } from "./contexts/AppStates";
 import ModalMenus from './layouts/ModalMenus'
 import WebsiteShortcuts from './layouts/WebsiteShortcutsArea'
-import { WebShortcutLinksButton } from "./components/WebShortcutLinksBtns";
-// import { SavedWebLinksStateContextProvider, useSavedWebLinksStateContext } from "../contexts/SavedWebLinksState";
 import { SavedWebLinksStateContextProvider } from "./contexts/SavedWebLinksState";
-
-// import bgImg1 from './assets/background_images/bgImg1.png';
 import bgImages from "./assets/background_images";
 
 export default function App() {
@@ -28,7 +24,7 @@ function MainScreen() {
   return (
     <div
       id="mainScreen"
-      // style={{backgroundImage: `url('${bgImages.bgImg3}')`}} 
+      style={{backgroundImage: `url('${bgImages.bgImg1}')`}} 
       className="flex justify-center items-center h-[100vh]
       bg-gray-800 font-GFont-Protest-Guerrilla tracking-wide bg-no-repeat bg-center bg-cover"
       onClick={() => {
@@ -44,7 +40,6 @@ function MainScreen() {
       <ModalMenus />
       <MenuButtons />
       <WebsiteShortcuts/>
-      {/* <WebsiteShortcuts {...states} /> */}
     </div>
   );
 }

@@ -6,7 +6,6 @@ export const SavedWebLinksStateContext = createContext({
             id: 1,
             websiteName: 'Google',
             websiteLink: 'https://www.google.com',
-            // favicon: 'https://www.google.com/s2/favicons?sz=128&domain_url=https://www.google.com',
         }
     ],
 
@@ -29,7 +28,6 @@ export function SavedWebLinksStateContextProvider({children}){
                 id: id, 
                 websiteName: websiteName, 
                 websiteLink: websiteLink
-                // favicon: `https://www.google.com/s2/favicons?sz=128&domain_url=${websiteLink}`
             }
         ])
     }
