@@ -8,7 +8,8 @@ import { WebShortcutLinksButton } from "./components/WebShortcutLinksBtns";
 // import { SavedWebLinksStateContextProvider, useSavedWebLinksStateContext } from "../contexts/SavedWebLinksState";
 import { SavedWebLinksStateContextProvider } from "./contexts/SavedWebLinksState";
 
-import bgImg1 from './assets/background_images/bgImg1.png';
+// import bgImg1 from './assets/background_images/bgImg1.png';
+import bgImages from "./assets/background_images";
 
 export default function App() {
   return (
@@ -27,8 +28,8 @@ function MainScreen() {
   return (
     <div
       id="mainScreen"
-      style={{backgroundImage: `url('${bgImg1}')`}} //"url('.src/assets/background_images/bgImg1.png')"}}
-      className="flex justify-center items-center h-[100vh] 
+      // style={{backgroundImage: `url('${bgImages.bgImg3}')`}} 
+      className="flex justify-center items-center h-[100vh]
       bg-gray-800 font-GFont-Protest-Guerrilla tracking-wide bg-no-repeat bg-center bg-cover"
       onClick={() => {
         if (menuButtonOn) {
