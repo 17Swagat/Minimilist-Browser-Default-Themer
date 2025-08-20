@@ -93,10 +93,10 @@ export function WebShortcutLinksButton({
         // Fallback to generic high-quality sources
         return [
             `https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${url}&size=256`, // {Free I suppose!!}
-            `https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/${domain.replace('.com', '').replace('.', '')}.svg`,
-            `https://icons.duckduckgo.com/ip3/${domain}.ico`,
-            `https://logo.clearbit.com/${domain}`,
-            `${url}/favicon.ico`
+            // `https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/${domain.replace('.com', '').replace('.', '')}.svg`,
+            // `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+            // `https://logo.clearbit.com/${domain}`,
+            // `${url}/favicon.ico`
         ];
     };
 
