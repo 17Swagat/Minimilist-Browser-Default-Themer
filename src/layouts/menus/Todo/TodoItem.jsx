@@ -1,5 +1,5 @@
 // new:
-import React, { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 // import { useTodo } from "../contexts/TodoContext";
 import { useTodoStateContext } from "../../../contexts/TodoStates";
 export default function TodoItem({ todo_item }) {
@@ -14,6 +14,16 @@ export default function TodoItem({ todo_item }) {
     toggleComplete
   } = useTodoStateContext()
 
+
+  const inputRef = useRef(null);
+
+  useEffect(()=>{
+    if (isEditable && inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [isEditable])
+  
+
   return (
     <div className="flex items-center bg-gray-300 rounded-lg shadow-md p-2 hover:shadow-lg transition duration-200">
 
@@ -27,6 +37,7 @@ export default function TodoItem({ todo_item }) {
       /> */}
 
       <input
+        ref={inputRef}
         type="text"
         className={`flex-1 p-3 rounded-md border overflow-y-auto focus:outline-none focus:ring-2 ${isEditable
             ? 'text-black bg-gray-100 border-2 border-blue-500 shadow-sm focus:ring-blue-500'
@@ -40,7 +51,7 @@ export default function TodoItem({ todo_item }) {
 
 
       <button
-        className="ml-3 bg-cyan-500 text-white px-4 py-2 rounded-lg hover:bg-cyan-600 transition duration-300 active:scale-95 select-none font-medium"
+        className={`ml-3 transition duration-300 ${isEditable ? 'bg-orange-500' : 'bg-cyan-700'}  text-white px-4 py-2 rounded-lg hover:opacity-80 active:scale-95 select-none font-medium`}
         onClick={() => {
           if (isEditable) {
             updateTodo(todo_item.id, todoContent)
@@ -50,7 +61,9 @@ export default function TodoItem({ todo_item }) {
           })
         }}
       >
-        {isEditable ? 'Save' : 'Edit'}
+        {/* {isEditable ? 'Save' : 'Edit'} */}
+        {isEditable ? '💾' : '✏️'}
+
       </button>
       <button
         className="ml-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300 active:scale-95 select-none font-medium"
