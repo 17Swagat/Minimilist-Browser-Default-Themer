@@ -56,9 +56,9 @@ export default function WebsiteShortcuts() {
 
       <div className={`w-[100%] h-[100%] absolute z-4 
       ${webShortcutLinksOpen ? 
-        "bg-blue-500 transition-all duration-300 translate-x-[65%] -translate-y-[70%] w-[550%] h-[250%]  flex gap-x-1.5 gap-y-2 flex-wrap place-content-start rounded-2xl p-1  overflow-y-auto" 
+        "bg-blue-500 transition-all duration-300 translate-x-[65%] -translate-y-[70%] w-[625%] h-[350%]  flex gap-x-1.5 gap-y-2 flex-wrap place-content-start rounded-2xl p-1  overflow-y-auto" 
         :
-        "bg-transparent transition duration-300 translate-x-0 -translate-y-0 scale-x-100 scale-y-100 overflow-visible"}`} 
+        "bg-transparent transition duration-500 translate-x-0 -translate-y-0 scale-x-100 scale-y-100 overflow-visible"}`} 
         onClick={(e)=>{
           e.stopPropagation()
         }}

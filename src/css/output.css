@@ -324,6 +324,9 @@
   .h-16 {
     height: calc(var(--spacing) * 16);
   }
+  .h-21 {
+    height: calc(var(--spacing) * 21);
+  }
   .h-24 {
     height: calc(var(--spacing) * 24);
   }
@@ -357,6 +360,9 @@
   .h-\[250\%\] {
     height: 250%;
   }
+  .h-\[350\%\] {
+    height: 350%;
+  }
   .h-full {
     height: 100%;
   }
@@ -381,6 +387,9 @@
   .w-12 {
     width: calc(var(--spacing) * 12);
   }
+  .w-21 {
+    width: calc(var(--spacing) * 21);
+  }
   .w-24 {
     width: calc(var(--spacing) * 24);
   }
@@ -399,8 +408,29 @@
   .w-\[220px\] {
     width: 220px;
   }
+  .w-\[549\%\] {
+    width: 549%;
+  }
   .w-\[550\%\] {
     width: 550%;
+  }
+  .w-\[551\%\] {
+    width: 551%;
+  }
+  .w-\[562\%\] {
+    width: 562%;
+  }
+  .w-\[580\%\] {
+    width: 580%;
+  }
+  .w-\[600\%\] {
+    width: 600%;
+  }
+  .w-\[620\%\] {
+    width: 620%;
+  }
+  .w-\[625\%\] {
+    width: 625%;
   }
   .w-full {
     width: 100%;
@@ -819,6 +849,15 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
+  .transition-transform {
+    transition-property: transform, translate, scale, rotate;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .duration-100 {
+    --tw-duration: 100ms;
+    transition-duration: 100ms;
+  }
   .duration-200 {
     --tw-duration: 200ms;
     transition-duration: 200ms;
@@ -826,6 +865,14 @@
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
+  }
+  .duration-500 {
+    --tw-duration: 500ms;
+    transition-duration: 500ms;
+  }
+  .duration-600 {
+    --tw-duration: 600ms;
+    transition-duration: 600ms;
   }
   .ease-out {
     --tw-ease: var(--ease-out);
