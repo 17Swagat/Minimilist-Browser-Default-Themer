@@ -15,7 +15,15 @@ export const SavedWebLinksStateContext = createContext({
 
 export function SavedWebLinksStateContextProvider({children}){
     // Concered Values & Functions
-    const [webLinks, setWebLinks] = useState([]);
+    const [webLinks, setWebLinks] = useState([
+        // {
+        //     id: 1,
+        //     websiteName: 'Google',
+        //     websiteLink: 'https://www.google.com',
+        // }
+    ]);
+  
+    
     const addNewWebLink = (websiteName, websiteLink)=>{
         // For Id:
         let now = new Date()
@@ -33,11 +41,13 @@ export function SavedWebLinksStateContextProvider({children}){
                 return item;
         }))
     }
-
+  
+    //////////////////////////////////////////////////////////////////////////////
     // [Saving & Loading WebShortcut Links From {Browser's Local Storage}]
     // * [Loading WebShortcuts]
     useEffect(()=>{
-        const saved_web_links = JSON.parse(localStorage.getItem('WEB_SHORTCUTS'))
+        const saved_web_links = JSON.parse(localStorage.getItem('WEBSHORTCUTS'))
+        // console.log(saved_web_links.length)
         if (saved_web_links && (saved_web_links.length > 0)) {
             setWebLinks(saved_web_links)
         }
@@ -45,8 +55,12 @@ export function SavedWebLinksStateContextProvider({children}){
 
     // * [Saving Webshortcuts]
     useEffect(()=>{
-        localStorage.setItem('WEB_SHORTCUTS', JSON.stringify(webLinks))
+        localStorage.setItem('WEBSHORTCUTS', JSON.stringify(webLinks))
     },[webLinks])
+
+    //////////////////////////////////////////////////////////////////////////////
+    
+    
     
     const value = {webLinks, addNewWebLink, deleteWebLink};
 

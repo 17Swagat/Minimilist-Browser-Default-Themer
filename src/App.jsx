@@ -5,12 +5,15 @@ import { AppStateContextProvider, useAppStateContext } from "./contexts/AppState
 import ModalMenus from './layouts/ModalMenus'
 import WebsiteShortcuts from './layouts/WebsiteShortcutsArea'
 import { WebShortcutLinksButton } from "./components/WebShortcutLinksBtn";
-
+// import { SavedWebLinksStateContextProvider, useSavedWebLinksStateContext } from "../contexts/SavedWebLinksState";
+import { SavedWebLinksStateContextProvider } from "./contexts/SavedWebLinksState";
 
 export default function App() {
   return (
     <AppStateContextProvider>
-      <MainScreen />
+      <SavedWebLinksStateContextProvider>
+        <MainScreen />
+      </SavedWebLinksStateContextProvider>
     </AppStateContextProvider>
   );
 }

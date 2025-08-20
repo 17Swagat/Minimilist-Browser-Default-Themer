@@ -5,12 +5,10 @@ import { AddWebShortcut_Body } from "./AddWebShortcut_body";
 import { SavedWebLinksStateContextProvider, useSavedWebLinksStateContext } from "../../../contexts/SavedWebLinksState";
 
 export default function AddWebShortcutMenu() {
-    return ( <SavedWebLinksStateContextProvider>
-                <Menu/>
-            </SavedWebLinksStateContextProvider>);
-}
+//     return <Menu/>
+// }
 
-function Menu() {
+// function Menu() {
     
     // const [displayedWebLinks, setDisplayedWebLinks] = useState([])
     const {webLinks, addNewWebLink, deleteWebLink} = useSavedWebLinksStateContext()
@@ -46,6 +44,7 @@ function Menu() {
                     onButtonClick={({ webname, url }) => {
                         if ((webname.trim() != '') && (url.trim() != '')) {
                             addNewWebLink(webname, url)
+                            console.log(webLinks)
                             closeAllMenus()
                         }
                     }}

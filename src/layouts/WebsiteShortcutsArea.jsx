@@ -7,15 +7,21 @@ import {
 import { loadShortcuts } from "../utils/loadShortcuts";
 import { appStorageStates } from "../app_storage_states";
 import { useAppStateContext } from "../contexts/AppStates";
+import { SavedWebLinksStateContextProvider, useSavedWebLinksStateContext } from "../contexts/SavedWebLinksState";
 
 export default function WebsiteShortcuts() {
+  return (
+      <View_WebsiteShortcuts/>
+  );
+}
+
+function View_WebsiteShortcuts() {
   // const [shortcuts, setShortcuts] = useState([]);
 
-  const [webShortcutLinks, setWebShortcutLinks] = useState([]);
-  
-  // Loading Saved WebShortcutLinks
-  useEffect(()=>{},[])
+  // const [webShortcutLinks, setWebShortcutLinks] = useState([]);
 
+  const {webLinks, addNewWebLink, deleteWebLink}  = useSavedWebLinksStateContext();
+  
   const {
     menuButtonOn,
     webShortcutLinksOpen,
@@ -39,7 +45,7 @@ export default function WebsiteShortcuts() {
   return (
     // WebShortcuts Button [Canvas] (On top of which buttons are present)
     <div className="bg-red-500 w-25 h-25 text-white absolute bottom-3 left-3 flex items-center justify-center z-1">
-      {/* (Button): WebShortCut-Button */}
+      {/* (Button): WebShortCut-Button -> "Click" */}
       <div
         className="w-[100%] h-[100%] bg-amber-300 rounded-full absolute z-5
         flex justify-center items-center text-2xl text-black select-none hover:cursor-pointer"
@@ -60,9 +66,7 @@ export default function WebsiteShortcuts() {
           e.stopPropagation()
         }}
         >
-        {
-          // webshortcutslinksButtonOn
-          webShortcutLinksOpen && (
+        {webShortcutLinksOpen && (
             <>
               <AddNewWebShortcutLinkButton
                 onClick={(e) => {
@@ -71,10 +75,14 @@ export default function WebsiteShortcuts() {
                   toggleWebShortcutLinkMenu();
                 }}
               />
+              
+              <div>
+                {/* {webLinks[0].id} */}
+              </div>
 
               {/* Loads the Saved-Sites */}
               {/* ✅ */}
-              {[].map((shortcut, index) => (
+              {webLinks.map((shortcut, index) => (
                 // 📌
                 // shortcut.favIcon
                 // shortcut.siteName
@@ -84,7 +92,7 @@ export default function WebsiteShortcuts() {
                 <div
                   onClick={() => {
                     window.open(
-                      shortcut.siteUrl,
+                      shortcut.websiteLink,
                       "_blank",
                       "noopener,noreferrer"
                     );
@@ -93,12 +101,14 @@ export default function WebsiteShortcuts() {
                   className="w-[100px] h-[100px] rounded-2xl bg-green-300 flex flex-col items-center justify-center cursor-pointer"
                 >
                   <img
-                    src={shortcut.favIcon}
+                    // TODO:
+                    // src={shortcut.favIcon}
+                    src = 'https://img.com'
                     alt="favicon"
                     width={16}
                     height={16}
                   />
-                  {shortcut.siteName}
+                  {shortcut.websiteLink}
                   {/* <a href={shortcut.siteUrl} target="_blank" rel="noreferrer">
                     {shortcut.siteName}
                   </a> */}
