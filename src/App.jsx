@@ -4,7 +4,7 @@ import MenuButtons from "./layouts/MenuButtons";
 import { AppStateContextProvider, useAppStateContext } from "./contexts/AppStates";
 import ModalMenus from './layouts/ModalMenus'
 import WebsiteShortcuts from './layouts/WebsiteShortcutsArea'
-import { WebShortcutLinksButton } from "./components/WebShortcutLinksBtn";
+import { WebShortcutLinksButton } from "./components/WebShortcutLinksBtns";
 // import { SavedWebLinksStateContextProvider, useSavedWebLinksStateContext } from "../contexts/SavedWebLinksState";
 import { SavedWebLinksStateContextProvider } from "./contexts/SavedWebLinksState";
 

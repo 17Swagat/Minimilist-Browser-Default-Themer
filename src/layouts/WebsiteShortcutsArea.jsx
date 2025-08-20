@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import {
   WebShortcutLinksButton,
   AddNewWebShortcutLinkButton,
-} from "../components/WebShortcutLinksBtn";
+} from "../components/WebShortcutLinksBtns";
 import { loadShortcuts } from "../utils/loadShortcuts";
 import { appStorageStates } from "../app_storage_states";
 import { useAppStateContext } from "../contexts/AppStates";

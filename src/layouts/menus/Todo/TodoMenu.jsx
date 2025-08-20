@@ -63,7 +63,7 @@ function TodoMenu(){
                setInputText(e.target.value)
             }}
           />
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300 active:scale-95 select-none font-medium" onClick={onAddButtonClick}>
+          <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300 active:scale-95 select-none" onClick={onAddButtonClick}>
             Add
           </button>
         </div>
