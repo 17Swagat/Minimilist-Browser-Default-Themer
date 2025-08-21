@@ -258,17 +258,15 @@ function DeleteButton({id}){
         {
             showDeletePopup && 
             <div 
-                className='w-[100px] h-[100px] bg-red-500 flex flex-col justify-center items-center select-none' 
+                className='w-[100px] h-[100px] bg-red-500 flex flex-col justify-center items-center select-none gap-1' 
                 onClick={(e)=>{e.stopPropagation()}}>
-                <div className='text-2xl'>Delete?</div>
+                <div className='text-[20px]'>Delete?</div>
                 <div className='flex  w-full justify-evenly text-[20px] mx-5'>
                     <div 
                         className='bg-yellow-700 px-0.5 rounded-[5px]'
                         onClick={(e)=>{
                             e.stopPropagation()
                             deleteWebLink(id)
-                            // setDeletePopup(prev => !prev)
-                            // console.log('DELETE SHORTCUT CODE')
                         }}>
                         Yes
                     </div>
@@ -286,6 +284,6 @@ function DeleteButton({id}){
 
 export function AddNewWebShortcutLinkButton({onClick}) {
     return (
-        <div className="w-[100px] h-[100px] rounded-2xl bg-red-500 flex justify-center items-center text-9xl active:bg-yellow-400 transition 0.3s ease select-none" onClick={onClick}> + </div>
+        <div className="w-[100px] h-[100px] rounded-2xl bg-[#0c6170be] flex justify-center items-center text-[100px] active:bg-yellow-400 transition 0.3s ease select-none" onClick={onClick}> + </div>
     );
 }
