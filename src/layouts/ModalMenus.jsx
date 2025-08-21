@@ -1,10 +1,10 @@
 // components/ModalMenus.jsx
-import { appStorageStates } from "../app_storage_states";
+// import { appStorageStates } from "../app_storage_states";
 import { PopupMenu, PopupMenu_Mini } from "../components/PopupMenus";
 import { useAppStateContext } from "../contexts/AppStates";
-import { getFaviconUrl } from "../utils/getFavicon";
-import { saveShortcut } from "../utils/saveShortcuts";
-import { AddWebShortcut_Body } from "./menus/AddWebShortcut/AddWebShortcut_body";
+// import { getFaviconUrl } from "../utils/getFavicon";
+// import { saveShortcut } from "../utils/saveShortcuts";
+// import { AddWebShortcut_Body } from "./menus/AddWebShortcut/AddWebShortcut_body";
 import AddWebShortcutMenu from "./menus/AddWebShortcut/AddWebShortcut";
 
 import gicon_search from "../assets/icons/google_apps/google.png";
@@ -17,6 +17,7 @@ import gicon_maps from "../assets/icons/google_apps/maps.png";
 
 // Menu Importing
 import TodoMenuUI from "./menus/Todo/TodoMenu";
+import SettingsMenuUI from "./menus/Settings/SettingsMenuUI";
 
 export default function ModalMenus() {
   const {
@@ -53,18 +54,18 @@ export default function ModalMenus() {
       }}
     >
       {/* Settings */}
-      {PopupMenu(
+      <SettingsMenuUI/>
+      {/* {PopupMenu(
         settingsMenuOpen,
         toggleSettingsMenu,
         "SETTINGS - MENU",
         settingsMenuOpen && <div>This is Settings content</div>
-      )}
+      )} */}
 
 
       {/* Todo */}
       {/* {TodoMenuUI()} */}
       <TodoMenuUI/>
-      
       
 
       {/* Shortcuts */}
@@ -126,40 +127,7 @@ export default function ModalMenus() {
       {/* Add WebShortcut Shortcut Menu */}
       {/* 0.2 */}
       <AddWebShortcutMenu/>
-      
 
-      {/* 0.1: */}
-      {/* 
-      {addWebShortcutLinkMenuOpen &&
-        PopupMenu_Mini(
-          ()=>{},
-          true,
-          ()=>{},
-          true,
-          "ADD SHORTCUT",
-          <AddWebShortcut_Body
-            onButtonClick={(data) => {
-              // // 1. Get Site favicon
-              // const siteName = data.name;
-              // const siteUrl = data.url;
-
-              // // 2. Get favicon
-              // const favIcon = getFaviconUrl(siteUrl);
-
-              // // 3. Save Site Name & Link (Data-Persists)
-              // const shortcutData = { siteName, siteUrl, favIcon };
-
-              // // Saving Shortcuts [State Update Happens Inside the function]
-              // saveShortcut(shortcutData).then((result) => {
-              //   appStorageStates.setState_userSavedWebLinks(result);
-              // });
-
-              // // Turning Off the Modal Windows
-              // set_AddNewWebShortcutOpen(false);
-              // set_ModalOpen(false);
-            }}
-          />
-        )} */}
     </div>
   );
 }

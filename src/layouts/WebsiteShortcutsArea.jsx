@@ -4,8 +4,8 @@ import {
   WebShortcutLinksButton,
   AddNewWebShortcutLinkButton,
 } from "../components/WebShortcutLinksBtns";
-import { loadShortcuts } from "../utils/loadShortcuts";
-import { appStorageStates } from "../app_storage_states";
+// import { loadShortcuts } from "../utils/loadShortcuts";
+// import { appStorageStates } from "../app_storage_states";
 import { useAppStateContext } from "../contexts/AppStates";
 import { SavedWebLinksStateContextProvider, useSavedWebLinksStateContext } from "../contexts/SavedWebLinksState";
 

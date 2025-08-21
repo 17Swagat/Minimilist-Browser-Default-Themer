@@ -24,7 +24,7 @@ function MainScreen() {
   return (
     <div
       id="mainScreen"
-      style={{backgroundImage: `url('${bgImages.bgImg1}')`}} 
+      // style={{backgroundImage: `url('${bgImages.bgImg2}')`}} 
       className="flex justify-center items-center h-[100vh]
       bg-gray-800 font-GFont-Protest-Guerrilla tracking-wide bg-no-repeat bg-center bg-cover"
       onClick={() => {
