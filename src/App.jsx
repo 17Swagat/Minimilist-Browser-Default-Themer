@@ -7,24 +7,44 @@ import WebsiteShortcuts from './layouts/WebsiteShortcutsArea'
 import { SavedWebLinksStateContextProvider } from "./contexts/SavedWebLinksState";
 import bgImages from "./assets/background_images";
 
+import useAppSettingsStateContext, { AppSettingsContextProvider } from "./contexts/AppSettingsControlState";
+
 export default function App() {
   return (
     <AppStateContextProvider>
       <SavedWebLinksStateContextProvider>
-        <MainScreen />
+        <AppSettingsContextProvider>
+          <MainScreen />
+        </AppSettingsContextProvider>
       </SavedWebLinksStateContextProvider>
     </AppStateContextProvider>
   );
 }
 
 function MainScreen() {
-  
-  const { menuButtonOn,webShortcutLinksOpen, closeAllMenus } = useAppStateContext();
+
+  const { menuButtonOn, webShortcutLinksOpen, closeAllMenus } = useAppStateContext();
+
+  const {
+    availableTimeFormats,
+    controls_clock,
+    controls_appBackground,
+    changeTimeFormat,
+    changeClockBGColor,
+    changeAppBGColor,
+    uploadAppBGImg } = useAppSettingsStateContext()
 
   return (
     <div
       id="mainScreen"
-      // style={{backgroundImage: `url('${bgImages.bgImg2}')`}} 
+
+      style={
+        controls_appBackground.bgUploadImagePath.trim() === ''
+          ? {}
+          : { backgroundImage: `url(${controls_appBackground.bgUploadImagePath})` }
+      }
+
+
       className="flex justify-center items-center h-[100vh]
       bg-gray-800 font-GFont-Protest-Guerrilla tracking-wide bg-no-repeat bg-center bg-cover"
       onClick={() => {
@@ -39,7 +59,7 @@ function MainScreen() {
       <Clock />
       <ModalMenus />
       <MenuButtons />
-      <WebsiteShortcuts/>
+      <WebsiteShortcuts />
     </div>
   );
 }

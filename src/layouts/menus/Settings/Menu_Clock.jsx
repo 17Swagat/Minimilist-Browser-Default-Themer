@@ -1,16 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useAppSettingsStateContext from "../../../contexts/AppSettingsControlState";
 
 export function ClockSettings() {
+    
+    const {
+        availableTimeFormats,
+        controls_clock,
+        changeTimeFormat,
+        changeClockBGColor,
+        } = useAppSettingsStateContext()
+    
+    
     const [selectedFormat, setSelectedFormat] = useState('12hr');
     const [selectedColor, setSelectedColor] = useState("#ff0000");
 
+    useEffect(()=>{
+        setSelectedFormat(controls_clock.selectedTimeFormat)
+        setSelectedColor(controls_clock.bgColor)
+    },[])
+
+
     const handleChange = (event) => {
         setSelectedFormat(event.target.value);
+        changeTimeFormat(event.target.value)
     };
 
     const handleColorChange = (e) => {
         setSelectedColor(e.target.value);
     };
+
 
     return (
         <div className="w-full h-full p-4 flex flex-col bg-gray-200 shadow-sm">
@@ -20,10 +38,10 @@ export function ClockSettings() {
                     <p className="text-gray-600 mb-2 uppercase tracking-wide">Time Format</p>
                     <form className="space-y-2 select-none">
                         {[
-                            { value: '12hr', label: '12-Hour (HH:MM AM/PM)' },
-                            { value: '12hrWithSeconds', label: '12-Hour (HH:MM:SS AM/PM)' },
-                            { value: '24hr', label: '24-Hour (HH:MM)' },
-                            { value: '24hrWithSeconds', label: '24-Hour (HH:MM:SS)' }
+                            { value: availableTimeFormats[0], label: '12-Hour (HH:MM AM/PM)' },
+                            { value: availableTimeFormats[1], label: '12-Hour (HH:MM:SS AM/PM)' },
+                            { value: availableTimeFormats[2], label: '24-Hour (HH:MM)' },
+                            { value: availableTimeFormats[3], label: '24-Hour (HH:MM:SS)' }
                         ].map(({ value, label }) => (
                             <label 
                                 key={value}
