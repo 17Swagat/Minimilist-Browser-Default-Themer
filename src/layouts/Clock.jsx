@@ -82,8 +82,9 @@ export function Clock() {
   return (
     <div
       className="p-5 text-white select-none tracking-wider flex justify-center items-center rounded-[7px] relative"
-      style={{
-        backgroundColor: controls_clock.bgColor,
+      style={
+        {
+        backgroundColor: (controls_clock.transparent) ? "transparent" : controls_clock.bgColor,
         fontSize: `${controls_clock.fontSize}px`,
       }}
     >

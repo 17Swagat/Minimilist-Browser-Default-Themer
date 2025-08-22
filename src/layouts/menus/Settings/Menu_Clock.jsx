@@ -7,7 +7,8 @@ export function ClockSettings() {
         controls_clock,
         changeTimeFormat,
         changeClockBGColor,
-        changeClockTimeFontSize
+        changeClockTimeFontSize,
+        timeBoxTransparent
     } = useAppSettingsStateContext();
 
     // Handlers use useCallback to avoid re-creation on every render
@@ -23,7 +24,7 @@ export function ClockSettings() {
 
     const handleFontSizeChange = useCallback(
         (e) => {
-            let value = Math.max(10, Number(e.target.value)); 
+            let value = Math.max(10, Number(e.target.value));
             changeClockTimeFontSize(value);
         },
         [changeClockTimeFontSize]
@@ -59,11 +60,10 @@ export function ClockSettings() {
                                     className="hidden"
                                 />
                                 <span
-                                    className={`w-4 h-4 rounded-full border border-gray-300 flex items-center justify-center transition-colors group-hover:border-blue-500 ${
-                                        controls_clock.selectedTimeFormat === value
-                                            ? 'bg-blue-500 border-blue-500'
-                                            : ''
-                                    }`}
+                                    className={`w-4 h-4 rounded-full border border-gray-300 flex items-center justify-center transition-colors group-hover:border-blue-500 ${controls_clock.selectedTimeFormat === value
+                                        ? 'bg-blue-500 border-blue-500'
+                                        : ''
+                                        }`}
                                 >
                                     {controls_clock.selectedTimeFormat === value && (
                                         <span className="w-2 h-2 rounded-full bg-white"></span>
@@ -85,10 +85,21 @@ export function ClockSettings() {
                             onChange={handleColorChange}
                             className="w-15 h-10 rounded cursor-pointer border border-gray-200 hover:border-blue-400 transition-all"
                             title="Choose clock background color"
+                            disabled = {(controls_clock.transparent)}
                         />
-                        <span className="text-gray-700 font-bold font-mono bg-gray-50 px-1.5 py-1 rounded">
-                            {controls_clock.bgColor}
-                        </span>
+
+                        <label className="flex flex-col items-start w-1/3">
+                            <span className="tracking-wider">Transparent {controls_clock.transparent ? "ON":"OFF"}</span>
+                            <input 
+                                type="checkbox" 
+                                name="transparent" 
+                                checked={controls_clock.transparent}
+                                onChange={(e)=>{
+                                    // console.log(e.target.value)
+                                    timeBoxTransparent()
+                                }}/>
+                        </label>
+
                         <span className="w-5"></span>
                         <div className="flex flex-col">
                             <label className="text-gray-700">

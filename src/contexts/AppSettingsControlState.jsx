@@ -8,12 +8,14 @@ export const AppSettingsContext = createContext({
         selectedTimeFormat: "12hours",
         bgColor: "#e17100",
         fontSize: 50,
+        transparent: false
     },
     controls_appBackground: {
         bgColor: "#1e2939",
         bgUploadImagePath: "",
     },
     changeTimeFormat: (formatSelected) => { },
+    timeBoxTransparent: ()=>{},
     changeClockBGColor: (color) => { },
     changeAppBGColor: (color) => { },
     uploadAppBGImg: (img_path) => { },
@@ -30,6 +32,7 @@ export function AppSettingsContextProvider({ children }) {
                 selectedTimeFormat: availableTimeFormats[1],
                 bgColor: "#e17100",
                 fontSize: 50,
+                transparent: false
             }
         );
     });
@@ -97,6 +100,10 @@ export function AppSettingsContextProvider({ children }) {
         });
     };
 
+    const timeBoxTransparent= ()=>{
+        setClockControls((prev) => ({ ...prev, transparent: !(prev.transparent)}));
+    }
+
     const values = {
         availableTimeFormats,
         controls_clock,
@@ -106,6 +113,7 @@ export function AppSettingsContextProvider({ children }) {
         changeClockTimeFontSize,
         changeAppBGColor,
         uploadAppBGImg,
+        timeBoxTransparent
     };
 
     return <AppSettingsContext.Provider value={values}>{children}</AppSettingsContext.Provider>;
