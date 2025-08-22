@@ -4,11 +4,11 @@ export const AppSettingsContext = createContext({
     availableTimeFormats: ['12hours', '12hoursWithSeconds', '24hours', '24hoursWithSeconds'],
     controls_clock: {
         selectedTimeFormat: "12hours",
-        bgColor: "e17100",
+        bgColor: "#e17100",
         fontSize: 50, // px
     },
     controls_appBackground: {
-        bgColor: "1e2939",
+        bgColor: "#1e2939",
         bgUploadImagePath: ""
     },
     changeTimeFormat: (formatSelected) => { },
@@ -21,20 +21,6 @@ export const AppSettingsContext = createContext({
 export function AppSettingsContextProvider({ children }) {
 
     const availableTimeFormats = ['12hr', '12hrWithSeconds', '24hr', '24hrWithSeconds']
-
-    // Failed Code
-    // const [controls_clock, setClockControls]= useState(
-    //     {
-    //         selectedTimeFormat: availableTimeFormats[1], 
-    //         bgColor: "#e17100",
-    //         fontSize: 50, // px
-    //     }
-    // )
-    // const [controls_appBackground, setAppBackground] = useState({
-    //     bgColor: "#1e2939",
-    //     bgUploadImagePath: ""
-    // })
-
 
     // Working Code
     const [controls_clock, setClockControls] = useState(() => {

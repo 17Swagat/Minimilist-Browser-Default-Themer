@@ -61,6 +61,24 @@ export function Clock() {
     return () => clearInterval(timer);
   }, [controls_clock.selectedTimeFormat]);
 
+  
+  const paddingText = (() => {
+    if (controls_clock.selectedTimeFormat === availableTimeFormats[0]) {
+      // 12hr
+      return "XXXXXXXX";
+    } else if (controls_clock.selectedTimeFormat === availableTimeFormats[1]) {
+      // 12hr With Seconds
+      return "XXXXXXXXXX";
+    } else if (controls_clock.selectedTimeFormat === availableTimeFormats[2]) {
+      // 24hr 
+      return "XXXX";
+    } else if (controls_clock.selectedTimeFormat === availableTimeFormats[3]) {
+      // 24hr With Seconds
+      return "XXXXXXX";
+    }
+    return "XXXXXX"; // Default
+  })();
+
   return (
     <div
       className="p-5 text-white select-none tracking-wide flex justify-center items-center rounded-[7px] relative"
@@ -71,8 +89,7 @@ export function Clock() {
     >
       {/* Invisible ghost text ensures container width is fixed */}
       <span className="invisible">
-        {/* {controls_clock.selectedTimeFormat.includes("SS") ? "00:00:00 PM" : "00:00 PM"} */}
-        "XXXXXXXX"
+        {paddingText}
       </span>
 
       {/* Actual time, absolutely centered */}

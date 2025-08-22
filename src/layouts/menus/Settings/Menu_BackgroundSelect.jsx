@@ -1,11 +1,16 @@
 import { useState } from "react";
+import useAppSettingsStateContext from "../../../contexts/AppSettingsControlState";
 
 export function Menu_BackgroundSelect() {
+
+  const {controls_appBackground, changeAppBGColor, uploadAppBGImg} = useAppSettingsStateContext()
+
   const [selectedColor, setSelectedColor] = useState("#ff0000");
   const [imagePath, setImagePath] = useState(null);
 
   const handleColorChange = (e) => {
-    setSelectedColor(e.target.value);
+    // setSelectedColor(e.target.value);
+    changeAppBGColor(e.target.value)
   };
 
   const handleImageUpload = (e) => {
@@ -25,16 +30,18 @@ export function Menu_BackgroundSelect() {
       {/* Color Picker */}
       <div className="p-4 bg-white rounded-xl shadow-md">
         <label className="block text-gray-800 font-medium mb-3">
-          🎨 Select Background Color
+          🎨 Select Background Color = {controls_appBackground.bgColor}
         </label>
         <div className="flex items-center gap-4">
           <input
             type="color"
-            value={selectedColor}
+            // value={selectedColor}
+            value = {controls_appBackground.bgColor}
             onChange={handleColorChange}
             className="w-14 h-10 rounded-md cursor-pointer border border-gray-300 shadow-sm"
           />
-          <span className="text-gray-700 font-mono">{selectedColor}</span>
+          <span className="text-gray-700 font-mono">{controls_appBackground.bgColor}</span>
+          {/* <span className="text-gray-700 font-mono">{selectedColor}</span> */}
         </div>
       </div>
 
@@ -56,6 +63,7 @@ export function Menu_BackgroundSelect() {
           </label>
         </div>
 
+        {/* Uploaded Image Preview: */}
         {imagePath && (
           <div className="mt-6">
             <p className="text-gray-600 mb-2">Preview:</p>

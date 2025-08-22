@@ -696,6 +696,9 @@
   .bg-\[\#5c3facff\] {
     background-color: #5c3facff;
   }
+  .bg-\[\#77\] {
+    background-color: #77;
+  }
   .bg-\[\#224b97a2\] {
     background-color: #224b97a2;
   }
@@ -705,8 +708,20 @@
   .bg-\[\#4225aaff\] {
     background-color: #4225aaff;
   }
+  .bg-\[\#7722\] {
+    background-color: #7722;
+  }
   .bg-\[\#066188\] {
     background-color: #066188;
+  }
+  .bg-\[\#772222\] {
+    background-color: #772222;
+  }
+  .bg-\[\#772252\] {
+    background-color: #772252;
+  }
+  .bg-\[\#7722422\] {
+    background-color: #7722422;
   }
   .bg-amber-300 {
     background-color: var(--color-amber-300);

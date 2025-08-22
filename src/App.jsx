@@ -38,15 +38,23 @@ function MainScreen() {
     <div
       id="mainScreen"
 
-      style={
-        controls_appBackground.bgUploadImagePath.trim() === ''
-          ? {}
-          : { backgroundImage: `url(${controls_appBackground.bgUploadImagePath})` }
-      }
+      // style={
+      //   controls_appBackground.bgUploadImagePath.trim() === ''
+      //     ? {}
+      //     : { backgroundImage: `url(${controls_appBackground.bgUploadImagePath})` }
 
+      // }
+      style={{
+        backgroundColor: controls_appBackground.bgColor,
+        backgroundImage:
+          (controls_appBackground.bgUploadImagePath.trim() === '')
+            ? undefined
+            : `url(${controls_appBackground.bgUploadImagePath})`,
+      }}
 
-      className="flex justify-center items-center h-[100vh]
-      bg-gray-800 font-GFont-Protest-Guerrilla tracking-wide bg-no-repeat bg-center bg-cover"
+      className={`flex justify-center items-center h-[100vh]
+       font-GFont-Protest-Guerrilla tracking-wide bg-no-repeat bg-center bg-cover`}
+      // bg-[#772252] font-GFont-Protest-Guerrilla tracking-wide bg-no-repeat bg-center bg-cover`}
       onClick={() => {
         if (menuButtonOn) {
           closeAllMenus();
