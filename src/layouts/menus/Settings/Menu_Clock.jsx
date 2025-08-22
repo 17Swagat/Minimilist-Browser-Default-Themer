@@ -108,7 +108,7 @@ export function ClockSettings() {
                             <input
                                 type="range"
                                 min={0}
-                                max={100}
+                                max={200}
                                 step={1}
                                 value={controls_clock.fontSize}
                                 onChange={handleFontSizeChange}

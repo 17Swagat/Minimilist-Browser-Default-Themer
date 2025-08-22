@@ -37,11 +37,24 @@ export function AppSettingsContextProvider({ children }) {
         );
     });
 
-    const [controls_appBackground, setAppBackground] = useState({
-        bgColor: "#1e2939",
-        bgUploadImagePath: "",
-    });
+    // const [controls_appBackground, setAppBackground] = useState({
+    //     bgColor: "#1e2939",
+    //     bgUploadImagePath: "",
+    // });
+    const [controls_appBackground, setAppBackground] = useState(() => {
+    const saved = JSON.parse(localStorage.getItem("APP_SETTINGS"));
+    return (
+        saved?.["app-settings"] || {
+            bgColor: "#1e2939",
+            bgUploadImagePath: "",
+        }
+    );
+});
 
+
+
+
+    
     // Load image from IndexedDB on mount
     useEffect(() => {
         async function loadImage() {

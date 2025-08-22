@@ -37,7 +37,7 @@ function MainScreen() {
       style={{
         backgroundColor: controls_appBackground.bgColor,
         backgroundImage:
-          controls_appBackground.bgUploadImagePath.trim() === ""
+          controls_appBackground.bgUploadImagePath?.trim() === ""
             ? undefined
             : `url(${controls_appBackground.bgUploadImagePath})`,
       }}
