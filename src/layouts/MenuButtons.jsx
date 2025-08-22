@@ -1,5 +1,6 @@
 import { MenuBtn } from "../components/MenuBtn";
 import { useAppStateContext } from "../contexts/AppStates";
+import btnIcons from "../assets/icons";
 
 export default function MenuButtons() {
  
@@ -17,17 +18,26 @@ export default function MenuButtons() {
   } = useAppStateContext()
 
   return (
-    <div className="bg-transparent w-25 h-25 text-white absolute bottom-3 right-3 flex items-center justify-center z-1">
+    // <div className="bg-transparent w-25 h-25 text-white absolute bottom-3 right-3 flex items-center justify-center z-1">
+    <div className="bg-transparent w-[70px] h-[70px] text-white absolute bottom-3 right-3 flex items-center justify-center z-1">
+      
+      {/* Menu Button */}
       <div
-        className="bg-gray-600 size-full rounded-full absolute z-5"
+        className="bg-gray-600 size-full rounded-full absolute z-5 transition duration-100 ease-linear active:invert hover:cursor-pointer select-none"
         onClick={(e) => {
           e.stopPropagation();
           toggleMenuButton()
         }}
-      ></div>
+      >
+        <img src={btnIcons.menu} alt="" className="pointer-events-none"/>
+      </div>
 
+      {/* Settings */}
       <MenuBtn 
-        btnName="Settings" 
+        // btnName="Settings" 
+        btnName={
+          <img src={btnIcons.settings} alt="" className="pointer-events-none"/>
+        }
         isVisible={menuButtonOn} 
         color="bg-red-400" 
         transitionAngle={0} 
@@ -43,8 +53,12 @@ export default function MenuButtons() {
           }
         } />
       
+      {/* Todo */}
       <MenuBtn 
-        btnName="Todo" 
+        // btnName="Todo" 
+        btnName={
+          <img src={btnIcons.todos} alt="" className="pointer-events-none"/>
+        }
         isVisible={menuButtonOn} 
         color="bg-cyan-800" 
         transitionAngle={30} 
@@ -56,8 +70,12 @@ export default function MenuButtons() {
           }
         } />
       
+      {/* Shortcuts */}
       <MenuBtn 
-        btnName="Shortcuts" 
+        btnName={
+          <img src={btnIcons.shortcut} alt="" className="pointer-events-none"/>
+        }
+        // btnName="Shortcuts" 
         isVisible={menuButtonOn} 
         color="bg-cyan-800" 
         transitionAngle={60} 
@@ -70,8 +88,12 @@ export default function MenuButtons() {
         } />
 
        
+      {/* Google Apps */}
       <MenuBtn 
-        btnName="Google Apps" 
+        btnName={
+          <img src={btnIcons.gapps} alt="" className="pointer-events-none"/>
+        }
+        // btnName="Google Apps" 
         isVisible={menuButtonOn} 
         color="bg-cyan-800" 
         transitionAngle={90} 
