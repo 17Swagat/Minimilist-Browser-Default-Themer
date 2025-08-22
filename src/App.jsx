@@ -37,13 +37,6 @@ function MainScreen() {
   return (
     <div
       id="mainScreen"
-
-      // style={
-      //   controls_appBackground.bgUploadImagePath.trim() === ''
-      //     ? {}
-      //     : { backgroundImage: `url(${controls_appBackground.bgUploadImagePath})` }
-
-      // }
       style={{
         backgroundColor: controls_appBackground.bgColor,
         backgroundImage:
@@ -54,8 +47,8 @@ function MainScreen() {
 
       className={`flex justify-center items-center h-[100vh]
        font-GFont-Protest-Guerrilla tracking-wide bg-no-repeat bg-center bg-cover`}
-      // bg-[#772252] font-GFont-Protest-Guerrilla tracking-wide bg-no-repeat bg-center bg-cover`}
-      onClick={() => {
+      
+       onClick={() => {
         if (menuButtonOn) {
           closeAllMenus();
         }
