@@ -4,7 +4,8 @@ export const AppSettingsContext = createContext({
     availableTimeFormats: ['12hours', '12hoursWithSeconds', '24hours', '24hoursWithSeconds'],
     controls_clock: {
         selectedTimeFormat: "12hours", 
-        bgColor: "e17100"
+        bgColor: "e17100",
+        fontSize: 50, // px
     },
     controls_appBackground: {
         bgColor: "1e2939",
@@ -13,7 +14,8 @@ export const AppSettingsContext = createContext({
     changeTimeFormat: (formatSelected)=>{},
     changeClockBGColor: (color)=>{},
     changeAppBGColor: (color)=>{},
-    uploadAppBGImg: (img_path) => {}
+    uploadAppBGImg: (img_path) => {},
+    changeClockTimeFontSize: (size)=>{}
 })
 
 export function AppSettingsContextProvider({children}) {
@@ -22,15 +24,22 @@ export function AppSettingsContextProvider({children}) {
 
     const [controls_clock, setClockControls]= useState(
         {
-            selectedTimeFormat: "12hours", 
-            bgColor: "e17100"
+            selectedTimeFormat: availableTimeFormats[1], 
+            bgColor: "#e17100",
+            fontSize: 50, // px
         }
     )
     
     const [controls_appBackground, setAppBackground] = useState({
-        bgColor: "1e2939",
+        bgColor: "#1e2939",
         bgUploadImagePath: ""
     })
+
+    const changeClockTimeFontSize = (size)=>{
+        if (size <= 50)
+            size = 50
+        setClockControls(prev => ({...prev, fontSize: size}))
+    }
     
     const changeTimeFormat= (formatSelected)=>{
         if (!availableTimeFormats.includes(formatSelected)) {
@@ -57,8 +66,9 @@ export function AppSettingsContextProvider({children}) {
         controls_appBackground,
         changeTimeFormat,
         changeClockBGColor,
+        changeClockTimeFontSize,
         changeAppBGColor,
-        uploadAppBGImg
+        uploadAppBGImg,
     }
 
     return <AppSettingsContext.Provider value={values}>

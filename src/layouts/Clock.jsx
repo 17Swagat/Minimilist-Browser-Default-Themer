@@ -1,42 +1,75 @@
 import { useEffect, useState } from "react";
+import useAppSettingsStateContext from "../contexts/AppSettingsControlState";
 
 export function Clock() {
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState("");
 
-  let getCurrentTime = () => {
+  const {
+    availableTimeFormats,
+    controls_clock,
+  } = useAppSettingsStateContext();
+
+  const getCurrentTime = () => {
     const now = new Date();
     let hours = now.getHours();
-    let ampm = hours >= 12 ? "PM" : "AM"; // variable position matters!!
-    if (hours > 12)
-      hours = hours % 12;
-
     let minutes = now.getMinutes();
     let seconds = now.getSeconds();
-    hours = hours ? hours : 12; // the hour '0' should be '12'
+
+    // Always pad minutes/seconds
     minutes = minutes < 10 ? "0" + minutes : minutes;
-    // seconds = seconds < 10 ? "0" + seconds : seconds;
-    const time = hours + ":" + minutes + ":" + seconds + " " + ampm;
-    return time;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    switch (controls_clock.selectedTimeFormat) {
+      case availableTimeFormats[0]: {
+        // 12hr
+        let ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        return `${hours}:${minutes} ${ampm}`;
+      }
+
+      case availableTimeFormats[1]: {
+        // 12hr With Seconds
+        let ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        return `${hours}:${minutes}:${seconds} ${ampm}`;
+      }
+
+      case availableTimeFormats[2]: {
+        // 24hr
+        return `${hours.toString().padStart(2, "0")}:${minutes}`;
+      }
+
+      case availableTimeFormats[3]: {
+        // 24hr With Seconds
+        return `${hours.toString().padStart(2, "0")}:${minutes}:${seconds}`;
+      }
+
+      default: {
+        return `${hours}:${minutes}:${seconds}`;
+      }
+    }
   };
 
-  
-  useEffect(()=>{
-    // Setting Time Each Second
+  useEffect(() => {
+    // Update every second
     const timer = setInterval(() => {
       setTime(getCurrentTime());
     }, 1000);
 
     return () => clearInterval(timer);
-
-  }, []);
+  }, [controls_clock.selectedTimeFormat]);
 
   return (
-    <div className="
-        w-[220px] h-[70px] p-5 text-white text-3xl select-none
-        tracking-wide  flex justify-center items-center bg-amber-600 rounded-[7px]
-        "
+    <div
+      className="w-[220px] h-[70px] p-5 text-white text-3xl select-none
+        tracking-wide flex justify-center items-center
+        rounded-[7px]"
+      style={{ backgroundColor: controls_clock.bgColor }}
     >
       {getCurrentTime()}
+      {/* {time} */}
     </div>
   );
 }

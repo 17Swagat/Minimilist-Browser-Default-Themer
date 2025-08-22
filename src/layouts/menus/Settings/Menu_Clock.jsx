@@ -1,39 +1,41 @@
-import { useEffect, useState } from "react";
+import { useCallback } from "react";
 import useAppSettingsStateContext from "../../../contexts/AppSettingsControlState";
 
 export function ClockSettings() {
-    
     const {
         availableTimeFormats,
         controls_clock,
         changeTimeFormat,
         changeClockBGColor,
-        } = useAppSettingsStateContext()
-    
-    
-    const [selectedFormat, setSelectedFormat] = useState('12hr');
-    const [selectedColor, setSelectedColor] = useState("#ff0000");
+        changeClockTimeFontSize
+    } = useAppSettingsStateContext();
 
-    useEffect(()=>{
-        setSelectedFormat(controls_clock.selectedTimeFormat)
-        setSelectedColor(controls_clock.bgColor)
-    },[])
+    // Handlers use useCallback to avoid re-creation on every render
+    const handleTimeFormatChange = useCallback(
+        (e) => changeTimeFormat(e.target.value),
+        [changeTimeFormat]
+    );
 
+    const handleColorChange = useCallback(
+        (e) => changeClockBGColor(e.target.value),
+        [changeClockBGColor]
+    );
 
-    const handleChange = (event) => {
-        setSelectedFormat(event.target.value);
-        changeTimeFormat(event.target.value)
-    };
-
-    const handleColorChange = (e) => {
-        setSelectedColor(e.target.value);
-    };
-
+    const handleFontSizeChange = useCallback(
+        (e) => {
+            let value = Math.max(50, Number(e.target.value)); // enforce minimum
+            // let value = Number(e.target.value)
+            changeClockTimeFontSize(value);
+        },
+        [changeClockTimeFontSize]
+    );
 
     return (
         <div className="w-full h-full p-4 flex flex-col bg-gray-200 shadow-sm">
             <div className="space-y-2">
-                <h2 className="text-2xl text-gray-800 ">Clock Settings</h2>
+                <h2 className="text-2xl text-gray-800">Clock Settings</h2>
+
+                {/* Time Format */}
                 <div>
                     <p className="text-gray-600 mb-2 uppercase tracking-wide">Time Format</p>
                     <form className="space-y-2 select-none">
@@ -43,24 +45,28 @@ export function ClockSettings() {
                             { value: availableTimeFormats[2], label: '24-Hour (HH:MM)' },
                             { value: availableTimeFormats[3], label: '24-Hour (HH:MM:SS)' }
                         ].map(({ value, label }) => (
-                            <label 
+                            <label
                                 key={value}
                                 className="flex items-center space-x-2 cursor-pointer group hover:bg-gray-50 p-1 rounded transition-colors"
                                 role="radio"
-                                aria-checked={selectedFormat === value}
+                                aria-checked={controls_clock.selectedTimeFormat === value}
                             >
                                 <input
                                     type="radio"
                                     name="timeFormat"
                                     value={value}
-                                    checked={selectedFormat === value}
-                                    onChange={handleChange}
+                                    checked={controls_clock.selectedTimeFormat === value}
+                                    onChange={handleTimeFormatChange}
                                     className="hidden"
                                 />
-                                <span className={`w-4 h-4 rounded-full border border-gray-300 flex items-center justify-center transition-colors group-hover:border-blue-500 ${
-                                    selectedFormat === value ? 'bg-blue-500 border-blue-500' : ''
-                                }`}>
-                                    {selectedFormat === value && (
+                                <span
+                                    className={`w-4 h-4 rounded-full border border-gray-300 flex items-center justify-center transition-colors group-hover:border-blue-500 ${
+                                        controls_clock.selectedTimeFormat === value
+                                            ? 'bg-blue-500 border-blue-500'
+                                            : ''
+                                    }`}
+                                >
+                                    {controls_clock.selectedTimeFormat === value && (
                                         <span className="w-2 h-2 rounded-full bg-white"></span>
                                     )}
                                 </span>
@@ -70,20 +76,40 @@ export function ClockSettings() {
                     </form>
                 </div>
 
+                {/* Background + Font Size */}
                 <div>
-                    <p className="text-gray-600 mb-2 uppercase tracking-wide">Background Color</p>
+                    <p className="text-gray-600 mb-2 uppercase tracking-wide">Background Color & Font Size</p>
                     <div className="flex items-center gap-3">
                         <input
                             type="color"
-                            value={selectedColor}
+                            value={controls_clock.bgColor}
                             onChange={handleColorChange}
                             className="w-15 h-10 rounded cursor-pointer border border-gray-200 hover:border-blue-400 transition-all"
                             title="Choose clock background color"
                         />
-                        <span className="text-gray-700 font-bold font-mono bg-gray-50 px-1.5 py-1 rounded">{selectedColor}</span>
+                        <span className="text-gray-700 font-bold font-mono bg-gray-50 px-1.5 py-1 rounded">
+                            {controls_clock.bgColor}
+                        </span>
+                        <span className="w-5"></span>
+                        <div className="flex flex-col">
+                            <label className="text-gray-700">
+                                Font Size: <span>{controls_clock.fontSize}px</span>
+                            </label>
+                            <input
+                                type="range"
+                                min={0}
+                                max={500}
+                                step={1}
+                                value={controls_clock.fontSize}
+                                onChange={handleFontSizeChange}
+                                className="w-40 h-6 rounded cursor-pointer border border-gray-200 hover:border-blue-400 transition-all"
+                                title="Adjust font size"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     );
-};
+}
+

@@ -309,6 +309,9 @@
   .mx-5 {
     margin-inline: calc(var(--spacing) * 5);
   }
+  .mt-0 {
+    margin-top: calc(var(--spacing) * 0);
+  }
   .mt-1 {
     margin-top: calc(var(--spacing) * 1);
   }
@@ -477,6 +480,9 @@
   }
   .w-25 {
     width: calc(var(--spacing) * 25);
+  }
+  .w-40 {
+    width: calc(var(--spacing) * 40);
   }
   .w-\[30px\] {
     width: 30px;
