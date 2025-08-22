@@ -23,8 +23,7 @@ export function ClockSettings() {
 
     const handleFontSizeChange = useCallback(
         (e) => {
-            let value = Math.max(50, Number(e.target.value)); // enforce minimum
-            // let value = Number(e.target.value)
+            let value = Math.max(10, Number(e.target.value)); 
             changeClockTimeFontSize(value);
         },
         [changeClockTimeFontSize]
@@ -98,7 +97,7 @@ export function ClockSettings() {
                             <input
                                 type="range"
                                 min={0}
-                                max={500}
+                                max={100}
                                 step={1}
                                 value={controls_clock.fontSize}
                                 onChange={handleFontSizeChange}

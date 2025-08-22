@@ -63,13 +63,22 @@ export function Clock() {
 
   return (
     <div
-      className="w-[220px] h-[70px] p-5 text-white text-3xl select-none
-        tracking-wide flex justify-center items-center
-        rounded-[7px]"
-      style={{ backgroundColor: controls_clock.bgColor }}
+      className="p-5 text-white select-none tracking-wide flex justify-center items-center rounded-[7px] relative"
+      style={{
+        backgroundColor: controls_clock.bgColor,
+        fontSize: `${controls_clock.fontSize}px`,
+      }}
     >
-      {getCurrentTime()}
-      {/* {time} */}
+      {/* Invisible ghost text ensures container width is fixed */}
+      <span className="invisible">
+        {/* {controls_clock.selectedTimeFormat.includes("SS") ? "00:00:00 PM" : "00:00 PM"} */}
+        "XXXXXXXX"
+      </span>
+
+      {/* Actual time, absolutely centered */}
+      <span className="absolute tracking-wide">
+        {getCurrentTime()}
+      </span>
     </div>
   );
 }

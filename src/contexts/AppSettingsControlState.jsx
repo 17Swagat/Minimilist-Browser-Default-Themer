@@ -36,8 +36,8 @@ export function AppSettingsContextProvider({children}) {
     })
 
     const changeClockTimeFontSize = (size)=>{
-        if (size <= 50)
-            size = 50
+        // if (size <= 50)
+        //     size = 50
         setClockControls(prev => ({...prev, fontSize: size}))
     }
     
