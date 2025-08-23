@@ -5,9 +5,15 @@
   "manifest_version": 3,
   "action": {
     // "default_popup": "index.html", // Need to change it with something else
-    "default_icon": "hello_extensions.png"
+    "default_icon": "ExtenLogo.png"
   },
   "permissions": ["storage"],
+  "icons": {
+    "16": "ExtenLogo.png",
+    "32": "ExtenLogo.png",
+    "48": "ExtenLogo.png",
+    "128": "ExtenLogo.png"
+  },
   
   "chrome_url_overrides": {
   "newtab": "index.html"
