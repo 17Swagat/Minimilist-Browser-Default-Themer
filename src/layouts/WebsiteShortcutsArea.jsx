@@ -42,12 +42,10 @@ export default function WebsiteShortcuts() {
 
   return (
     // WebShortcuts Button [Canvas] (On top of which buttons are present)
-    // <div className="bg-red-500 w-25 h-25 text-white absolute bottom-3 left-3 flex items-center justify-center z-1">
     <div className="bg-transparent w-25 h-25 text-white absolute bottom-3 left-3 flex items-center justify-center z-1">
       
       {/* (Button): WebShortCut-Button -> "Click" */}
       <div
-        // className="w-[100%] h-[100%] bg-amber-300 rounded-full absolute z-5
         className="w-[70px] h-[70px] bg-amber-300 rounded-full absolute left-0 bottom-0 z-5
         flex justify-center items-center text-2xl text-black select-none hover:cursor-pointer"
         onClick={(e) => {
@@ -79,52 +77,15 @@ export default function WebsiteShortcuts() {
               }}
             />
 
-
-            {/* Loads the Saved-Sites */}
-            {/* ✅ */}
-            {/* // 📌 */}
-            {/* // shortcut.favIcon */}
-            {/* // shortcut.siteName */}
-            {/* // shortcut.siteUrl */}
-            {/* {webLinks.map((shortcut, index) => (
-
-                //2.3
-                <div
-                  onClick={() => {
-                    window.open(
-                      shortcut.websiteLink,
-                      "_blank",
-                      "noopener,noreferrer"
-                    );
-                  }}
-                  key={index}
-                  className="w-[100px] h-[100px] rounded-2xl bg-green-300 flex flex-col items-center justify-center cursor-pointer"
-                >
-                  <img
-                    // TODO:
-                    src = 'https://img.com'
-                    alt="favicon"
-                    width={16}
-                    height={16}
-                  />
-                  {shortcut.websiteLink}
-                </div>
-              ))} */}
-
             {webLinks.map((webShortcutItem, index) =>
               <WebShortcutLinksButton
                 key={webShortcutItem.id}
                 id={webShortcutItem.id}
                 siteName={webShortcutItem.websiteName}
                 siteUrl={webShortcutItem.websiteLink}
-              // siteFavicon = {webShortcutItem.favicon} 
               />
             )}
 
-            {/* 
-              <WebShortcutLinksButton siteName="Example Site 1" siteUrl="https://example1.com" siteFavicon = 'https://example1.com/favicon.ico' />
-            <WebShortcutLinksButton siteName="Example Site 2" siteUrl="https://example2.com" siteFavicon = 'https://example2.com/favicon.ico' />
-            <WebShortcutLinksButton siteName="Example Site 3" siteUrl="https://example3.com" siteFavicon = 'https://example3.com/favicon.ico' /> */}
           </>
         )
         }

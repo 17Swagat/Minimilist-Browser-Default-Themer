@@ -1,10 +1,6 @@
-// components/ModalMenus.jsx
-// import { appStorageStates } from "../app_storage_states";
 import { PopupMenu, PopupMenu_Mini } from "../components/PopupMenus";
+import { GMenu } from "./menus/GApps/GMenu";
 import { useAppStateContext } from "../contexts/AppStates";
-// import { getFaviconUrl } from "../utils/getFavicon";
-// import { saveShortcut } from "../utils/saveShortcuts";
-// import { AddWebShortcut_Body } from "./menus/AddWebShortcut/AddWebShortcut_body";
 import AddWebShortcutMenu from "./menus/AddWebShortcut/AddWebShortcut";
 
 import gicon_search from "../assets/icons/google_apps/google.png";
@@ -54,7 +50,7 @@ export default function ModalMenus() {
       }}
     >
       {/* Settings */}
-      <SettingsMenuUI/>
+      <SettingsMenuUI />
       {/* {PopupMenu(
         settingsMenuOpen,
         toggleSettingsMenu,
@@ -65,8 +61,8 @@ export default function ModalMenus() {
 
       {/* Todo */}
       {/* {TodoMenuUI()} */}
-      <TodoMenuUI/>
-      
+      <TodoMenuUI />
+
 
       {/* Shortcuts */}
       {PopupMenu(
@@ -77,8 +73,45 @@ export default function ModalMenus() {
       )}
 
       {/* Google Apps */}
+      {/* #1 */}
+      {GMenu({
+        menuState: googleAppsMenuOpen,
+        toggleMenuStateFunc: toggleGoogleAppsMenu,
+        menuName: "Google Apps",
+        menuBody: googleAppsMenuOpen && (
+          <div className="w-full h-full grid grid-cols-3 sm:grid-cols-4 gap-4 p-4
+          ">
+            {[
+
+              { name: "Search", icon: gicon_search },
+              { name: "Gmail", icon: gicon_mail },
+              { name: "Keep", icon: gicon_keep },
+              { name: "Forms", icon: gicon_forms },
+              { name: "Maps", icon: gicon_maps },
+              { name: "YouTube", icon: gicon_youtube },
+            ].map((app) => (
+              <div
+                key={app.name}
+                className="flex flex-col justify-center items-center cursor-pointer hover:bg-white/10 p-3 rounded-lg transition-all duration-200"
+                onClick={() => window.open(app.url, "_blank")}
+              >
+                <img
+                  src={app.icon}
+                  alt={`${app.name} icon`}
+                  className="w-14 h-14 mb-2"
+                />
+                <span className="text-white text-sm font-medium text-center">
+                  {app.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        )
+      })}
+
+      {/* ************************ */}
       {/* #2 */}
-      {PopupMenu(
+      {/* {GMenu(
         googleAppsMenuOpen,
         toggleGoogleAppsMenu,
         "Google Apps",
@@ -121,12 +154,12 @@ export default function ModalMenus() {
             ))}
           </div>
         )
-      )}
+      )} */}
 
 
       {/* Add WebShortcut Shortcut Menu */}
       {/* 0.2 */}
-      <AddWebShortcutMenu/>
+      <AddWebShortcutMenu />
 
     </div>
   );

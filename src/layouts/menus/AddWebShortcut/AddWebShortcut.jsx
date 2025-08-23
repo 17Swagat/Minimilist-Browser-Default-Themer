@@ -5,12 +5,7 @@ import { AddWebShortcut_Body } from "./AddWebShortcut_body";
 import { SavedWebLinksStateContextProvider, useSavedWebLinksStateContext } from "../../../contexts/SavedWebLinksState";
 
 export default function AddWebShortcutMenu() {
-//     return <Menu/>
-// }
-
-// function Menu() {
     
-    // const [displayedWebLinks, setDisplayedWebLinks] = useState([])
     const {webLinks, addNewWebLink, deleteWebLink} = useSavedWebLinksStateContext()
     
     const {
