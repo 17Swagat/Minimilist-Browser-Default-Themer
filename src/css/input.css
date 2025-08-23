@@ -44,4 +44,28 @@
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background-color: #555;
   }
+
+  
+  /* Drag-and-drop utilities */
+  .draggable {
+    @apply select-none transition-opacity duration-200; /* Prevent text selection, smooth opacity transition */
+  }
+
+  .draggable:hover {
+    @apply scale-105; /* Subtle hover effect */
+  }
+
+  /* Custom cursor styles for grab/grabbing */
+  .draggable[draggable="true"] {
+    cursor: grab;
+  }
+
+  .draggable[draggable="true"]:active {
+    cursor: grabbing;
+  }
+
+  /* Drop zone effect */
+  .drag-over {
+    @apply bg-white/20; /* Highlight drop target */
+  }
 }
