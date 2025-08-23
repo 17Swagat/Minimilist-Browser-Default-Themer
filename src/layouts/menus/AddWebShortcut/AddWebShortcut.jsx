@@ -1,8 +1,9 @@
-import { useContext, useEffect, useState } from "react";
-import { PopupMenu_Mini } from "../../../components/PopupMenus";
+// import { useContext, useEffect, useState } from "react";
+// import { PopupMenu_Mini } from "../../../components/PopupMenus";
 import { useAppStateContext } from "../../../contexts/AppStates";
 import { AddWebShortcut_Body } from "./AddWebShortcut_body";
-import { SavedWebLinksStateContextProvider, useSavedWebLinksStateContext } from "../../../contexts/SavedWebLinksState";
+import { useSavedWebLinksStateContext } from "../../../contexts/SavedWebLinksState";
+import { WebShortcuts_PopupMini } from "./PopupMenuMini";
 
 export default function AddWebShortcutMenu() {
     
@@ -30,7 +31,7 @@ export default function AddWebShortcutMenu() {
 
 
     return (
-        <PopupMenu_Mini
+        <WebShortcuts_PopupMini
             menuState={addWebShortcutLinkMenuOpen}
             toggleMenuStateFunc={toggleWebShortcutLinkMenu}
             menuName="Add Website Shortcut"

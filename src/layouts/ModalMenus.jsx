@@ -1,16 +1,7 @@
-import { PopupMenu, PopupMenu_Mini } from "../components/PopupMenus";
+import { PopupMenu} from "../components/PopupMenus";
 import { GMenu } from "./menus/GApps/GMenu";
 import { useAppStateContext } from "../contexts/AppStates";
 import AddWebShortcutMenu from "./menus/AddWebShortcut/AddWebShortcut";
-
-// import gicon_search from "../assets/icons/google_apps/google.png";
-// import gicon_mail from "../assets/icons/google_apps/gmail.png";
-// import gicon_forms from "../assets/icons/google_apps/google-forms.png";
-// import gicon_keep from "../assets/icons/google_apps/keeps.png";
-// import gicon_youtube from "../assets/icons/google_apps/youtube.png";
-// import gicon_maps from "../assets/icons/google_apps/maps.png";
-// import gicon_ytmusic from "../assets/icons/google_apps/yt_music.png";
-import GAppsIcons from "../assets/icons/google_apps";
 
 
 // Menu Importing
@@ -54,16 +45,10 @@ export default function ModalMenus() {
     >
       {/* Settings */}
       <SettingsMenuUI />
-      {/* {PopupMenu(
-        settingsMenuOpen,
-        toggleSettingsMenu,
-        "SETTINGS - MENU",
-        settingsMenuOpen && <div>This is Settings content</div>
-      )} */}
+      
 
 
       {/* Todo */}
-      {/* {TodoMenuUI()} */}
       <TodoMenuUI />
 
 
