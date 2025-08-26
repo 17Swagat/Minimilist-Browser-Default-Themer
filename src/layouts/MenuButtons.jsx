@@ -19,7 +19,6 @@ export default function MenuButtons() {
   } = useAppStateContext()
 
   return (
-    // <div className="bg-transparent w-25 h-25 text-white absolute bottom-3 right-3 flex items-center justify-center z-1">
     <div className="bg-transparent w-[70px] h-[70px] text-white absolute bottom-3 right-3 flex items-center justify-center z-1">
       
       {/* Menu Button */}
@@ -35,7 +34,6 @@ export default function MenuButtons() {
 
       {/* Settings */}
       <MenuBtn 
-        // btnName="Settings" 
         btnName={
           <img src={btnIcons.settings} alt="" className="pointer-events-none"/>
         }
@@ -56,7 +54,6 @@ export default function MenuButtons() {
       
       {/* Todo */}
       <MenuBtn 
-        // btnName="Todo" 
         btnName={
           <img src={btnIcons.todos} alt="" className="pointer-events-none"/>
         }
@@ -71,23 +68,6 @@ export default function MenuButtons() {
           }
         } />
       
-      {/* Shortcuts :=> [Will include it in the Settings Menu] */}
-      {/* <MenuBtn 
-        btnName={
-          <img src={btnIcons.shortcut} alt="" className="pointer-events-none"/>
-        }
-        // btnName="Shortcuts" 
-        isVisible={menuButtonOn} 
-        color="bg-cyan-800" 
-        transitionAngle={60} 
-        onclick={
-          (e)=>{
-            e.stopPropagation()
-            toggleShortcutsMenu()
-            toggleMenuButton()
-          }
-        } /> */}
-
       
       {/* Pomodoro */}
       <MenuBtn 
