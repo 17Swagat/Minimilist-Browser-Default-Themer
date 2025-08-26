@@ -34,130 +34,233 @@ export default function PomodoroMenu() {
     )
 }
 
-// function MenuBody(){
-//     return (<div>This is Shortcuts content</div>);
-// }
+
+// New: MenuBody():
+// import { useAppStateContext } from "../../../contexts/AppStates";
+// import { useEffect, useRef } from "react";
+
+// import { useAppStateContext } from "../../../contexts/AppStates";
+
+// Timer types with their durations in seconds
+const timerTypes = {
+  short: { name: 'Short Break', duration: 5 * 60 },
+  long: { name: 'Long Break', duration: 15 * 60 },
+  focus: { name: 'Focus Mode', duration: 45 * 60 },
+};
 
 function MenuBody() {
-    // Timer types with their durations in seconds
-    const timerTypes = {
-        short: { name: 'Short Break', duration: 5 * 60 },
-        long: { name: 'Long Break', duration: 15 * 60 },
-        focus: { name: 'Focus Mode', duration: 45 * 60 }
-    };
-    
-    const [selectedTimer, setSelectedTimer] = useState('short');
-    const [timeLeft, setTimeLeft] = useState(timerTypes.short.duration);
-    const [isRunning, setIsRunning] = useState(false);
-    const intervalRef = useRef(null);
-    
-    // Format time for display (MM:SS)
-    const formatTime = (seconds) => {
-        const mins = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-    };
-    
-    // Request notification permission on component mount
-    useEffect(() => {
-        if ('Notification' in window && Notification.permission === 'default') {
-            Notification.requestPermission();
-        }
-    }, []);
-    
-    // Timer countdown logic
-    useEffect(() => {
-        if (isRunning && timeLeft > 0) {
-            intervalRef.current = setInterval(() => {
-                setTimeLeft(prev => prev - 1);
-            }, 1000);
-        } else if (timeLeft === 0 && isRunning) {
-            // Timer completed
-            setIsRunning(false);
-            clearInterval(intervalRef.current);
-            showNotification();
-            // Reset timer to initial value
-            setTimeLeft(timerTypes[selectedTimer].duration);
-        }
-        
-        return () => clearInterval(intervalRef.current);
-    }, [isRunning, timeLeft, selectedTimer, timerTypes]);
-    
-    // Show desktop notification
-    const showNotification = () => {
-        if ('Notification' in window && Notification.permission === 'granted') {
-            const timerName = timerTypes[selectedTimer].name;
-            new Notification(`Pomodoro Timer`, {
-                body: `${timerName} session completed!`,
-                icon: '/favicon.ico' // Replace with your actual icon path
-            });
-        }
-    };
-    
-    // Start/pause timer
-    const toggleTimer = () => {
-        setIsRunning(!isRunning);
-    };
-    
-    // Reset timer
-    const resetTimer = () => {
-        setIsRunning(false);
-        clearInterval(intervalRef.current);
-        setTimeLeft(timerTypes[selectedTimer].duration);
-    };
-    
-    // Select timer type
-    const selectTimer = (type) => {
-        setSelectedTimer(type);
-        setTimeLeft(timerTypes[type].duration);
-        setIsRunning(false);
-        clearInterval(intervalRef.current);
-    };
-    
-    return (
-        <div className="w-full h-full bg-transparent flex justify-center items-center p-1">
-        <div className="p-4 w-74 py-5 bg-[#04143a] rounded-2xl">
-            <div className="text-center mb-4">
-                <div className="text-3xl text-white font-bold mb-2">{formatTime(timeLeft)}</div>
-                <div className="text-sm text-gray-300">{timerTypes[selectedTimer].name}</div>
-            </div>
-            
-            <div className="flex justify-center space-x-2 mb-4">
-                <button 
-                    onClick={toggleTimer}
-                    className={`px-4 py-2 rounded ${isRunning ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-green-500 hover:bg-green-600'} text-white transition`}
-                >
-                    {isRunning ? 'Pause' : 'Start'}
-                </button>
-                <button 
-                    onClick={resetTimer}
-                    className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded transition"
-                >
-                    Reset
-                </button>
-            </div>
-            
-            <div className="space-y-2">
-                <button 
-                    onClick={() => selectTimer('short')}
-                    className={`w-full py-2 rounded ${selectedTimer === 'short' ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
-                >
-                    Short Break (5 min)
-                </button>
-                <button 
-                    onClick={() => selectTimer('long')}
-                    className={`w-full py-2 rounded ${selectedTimer === 'long' ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
-                >
-                    Long Break (15 min)
-                </button>
-                <button 
-                    onClick={() => selectTimer('focus')}
-                    className={`w-full py-2 rounded ${selectedTimer === 'focus' ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
-                >
-                    Focus Mode (45 min)
-                </button>
-            </div>
+  const { selectedTimer, setSelectedTimer, timeLeft, setTimeLeft, isRunning, setIsRunning } =
+    useAppStateContext();
+
+  // Format time for display (MM:SS)
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  // Start/pause timer
+  const toggleTimer = () => {
+    setIsRunning(!isRunning);
+  };
+
+  // Reset timer
+  const resetTimer = () => {
+    setIsRunning(false);
+    setTimeLeft(timerTypes[selectedTimer].duration);
+  };
+
+  // Select timer type
+  const selectTimer = (type) => {
+    setSelectedTimer(type);
+    setTimeLeft(timerTypes[type].duration);
+    setIsRunning(false);
+  };
+
+  return (
+    <div className="w-full h-full bg-transparent flex justify-center items-center p-1">
+      <div className="p-4 w-74 py-5 bg-[#04143a] rounded-2xl">
+        <div className="text-center mb-4">
+          <div className="text-3xl text-white font-bold mb-2">{formatTime(timeLeft)}</div>
+          <div className="text-sm text-gray-300">{timerTypes[selectedTimer].name}</div>
         </div>
-</div>
-    );
+
+        <div className="flex justify-center space-x-2 mb-4">
+          <button
+            onClick={toggleTimer}
+            className={`px-4 py-2 rounded ${
+              isRunning ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-green-500 hover:bg-green-600'
+            } text-white transition`}
+          >
+            {isRunning ? 'Pause' : 'Start'}
+          </button>
+          <button
+            onClick={resetTimer}
+            className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded transition"
+          >
+            Reset
+          </button>
+        </div>
+
+        <div className="space-y-2">
+          <button
+            onClick={() => selectTimer('short')}
+            className={`w-full py-2 rounded ${
+              selectedTimer === 'short' ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'
+            }`}
+          >
+            Short Break (5 min)
+          </button>
+          <button
+            onClick={() => selectTimer('long')}
+            className={`w-full py-2 rounded ${
+              selectedTimer === 'long' ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'
+            }`}
+          >
+            Long Break (15 min)
+          </button>
+          <button
+            onClick={() => selectTimer('focus')}
+            className={`w-full py-2 rounded ${
+              selectedTimer === 'focus' ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'
+            }`}
+          >
+            Focus Mode (45 min)
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+
+// Old:
+// function MenuBody() {
+//     // Timer types with their durations in seconds
+//     const timerTypes = {
+//         short: { name: 'Short Break', duration: 5 * 60 },
+//         long: { name: 'Long Break', duration: 15 * 60 },
+//         focus: { name: 'Focus Mode', duration: 45 * 60 }
+//     };
+    
+//     const [selectedTimer, setSelectedTimer] = useState('short');
+//     const [timeLeft, setTimeLeft] = useState(timerTypes.short.duration);
+//     const [isRunning, setIsRunning] = useState(false);
+//     const intervalRef = useRef(null);
+    
+//     // Format time for display (MM:SS)
+//     const formatTime = (seconds) => {
+//         const mins = Math.floor(seconds / 60);
+//         const secs = seconds % 60;
+//         return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+//     };
+    
+//     // Request notification permission on component mount
+//     useEffect(() => {
+//         if ('Notification' in window && Notification.permission === 'default') {
+//             Notification.requestPermission();
+//         }
+//     }, []);
+    
+//     // Timer countdown logic
+//     useEffect(() => {
+//         if (isRunning && timeLeft > 0) {
+//             intervalRef.current = setInterval(() => {
+//                 setTimeLeft(prev => prev - 1);
+//             }, 1000);
+//         } else if (timeLeft === 0 && isRunning) {
+//             // Timer completed
+//             setIsRunning(false);
+//             clearInterval(intervalRef.current);
+//             showNotification();
+//             // Reset timer to initial value
+//             setTimeLeft(timerTypes[selectedTimer].duration);
+//         }
+        
+//         return () => clearInterval(intervalRef.current);
+//     }, [isRunning, timeLeft, selectedTimer, timerTypes]);
+    
+//     // Show desktop notification
+//     const showNotification = () => {
+//         if ('Notification' in window && Notification.permission === 'granted') {
+//             const timerName = timerTypes[selectedTimer].name;
+//             new Notification(`Pomodoro Timer`, {
+//                 body: `${timerName} session completed!`,
+//                 icon: '/favicon.ico' // Replace with your actual icon path
+//             });
+//         }
+//     };
+    
+//     // Start/pause timer
+//     const toggleTimer = () => {
+//         setIsRunning(!isRunning);
+//     };
+    
+//     // Reset timer
+//     const resetTimer = () => {
+//         setIsRunning(false);
+//         clearInterval(intervalRef.current);
+//         setTimeLeft(timerTypes[selectedTimer].duration);
+//     };
+    
+//     // Select timer type
+//     const selectTimer = (type) => {
+//         setSelectedTimer(type);
+//         setTimeLeft(timerTypes[type].duration);
+//         setIsRunning(false);
+//         clearInterval(intervalRef.current);
+//     };
+    
+//     return (
+//         <div className="w-full h-full bg-transparent flex justify-center items-center p-1">
+//         <div className="p-4 w-74 py-5 bg-[#04143a] rounded-2xl">
+//             <div className="text-center mb-4">
+//                 <div className="text-3xl text-white font-bold mb-2">{formatTime(timeLeft)}</div>
+//                 <div className="text-sm text-gray-300">{timerTypes[selectedTimer].name}</div>
+//             </div>
+            
+//             <div className="flex justify-center space-x-2 mb-4">
+//                 <button 
+//                     onClick={toggleTimer}
+//                     className={`px-4 py-2 rounded ${isRunning ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-green-500 hover:bg-green-600'} text-white transition`}
+//                 >
+//                     {isRunning ? 'Pause' : 'Start'}
+//                 </button>
+//                 <button 
+//                     onClick={resetTimer}
+//                     className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded transition"
+//                 >
+//                     Reset
+//                 </button>
+//             </div>
+            
+//             <div className="space-y-2">
+//                 <button 
+//                     onClick={() => selectTimer('short')}
+//                     className={`w-full py-2 rounded ${selectedTimer === 'short' ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
+//                 >
+//                     Short Break (5 min)
+//                 </button>
+//                 <button 
+//                     onClick={() => selectTimer('long')}
+//                     className={`w-full py-2 rounded ${selectedTimer === 'long' ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
+//                 >
+//                     Long Break (15 min)
+//                 </button>
+//                 <button 
+//                     onClick={() => selectTimer('focus')}
+//                     className={`w-full py-2 rounded ${selectedTimer === 'focus' ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
+//                 >
+//                     Focus Mode (45 min)
+//                 </button>
+//             </div>
+//         </div>
+// </div>
+//     );
+// }
