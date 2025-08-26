@@ -513,9 +513,6 @@
   .w-40 {
     width: calc(var(--spacing) * 40);
   }
-  .w-64 {
-    width: calc(var(--spacing) * 64);
-  }
   .w-74 {
     width: calc(var(--spacing) * 74);
   }
@@ -760,9 +757,6 @@
   .bg-\[\#4d45452b\] {
     background-color: #4d45452b;
   }
-  .bg-\[\#5c3fac3a\] {
-    background-color: #5c3fac3a;
-  }
   .bg-\[\#5c3fac3d\] {
     background-color: #5c3fac3d;
   }
@@ -774,9 +768,6 @@
   }
   .bg-\[\#513e86\] {
     background-color: #513e86;
-  }
-  .bg-\[\#2752b4ff\] {
-    background-color: #2752b4ff;
   }
   .bg-\[\#04143a\] {
     background-color: #04143a;
@@ -817,9 +808,6 @@
   .bg-gray-300 {
     background-color: var(--color-gray-300);
   }
-  .bg-gray-500 {
-    background-color: var(--color-gray-500);
-  }
   .bg-gray-600 {
     background-color: var(--color-gray-600);
   }
@@ -858,9 +846,6 @@
   }
   .bg-white {
     background-color: var(--color-white);
-  }
-  .bg-yellow-200 {
-    background-color: var(--color-yellow-200);
   }
   .bg-yellow-500 {
     background-color: var(--color-yellow-500);
@@ -942,9 +927,6 @@
   .object-contain {
     object-fit: contain;
   }
-  .p-0 {
-    padding: calc(var(--spacing) * 0);
-  }
   .p-1 {
     padding: calc(var(--spacing) * 1);
   }
@@ -989,12 +971,6 @@
   }
   .py-5 {
     padding-block: calc(var(--spacing) * 5);
-  }
-  .py-8 {
-    padding-block: calc(var(--spacing) * 8);
-  }
-  .py-10 {
-    padding-block: calc(var(--spacing) * 10);
   }
   .text-center {
     text-align: center;

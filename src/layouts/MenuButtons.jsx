@@ -10,7 +10,8 @@ export default function MenuButtons() {
     toggleTodoMenu, 
     toggleSettingsMenu, 
     toggleGoogleAppsMenu, 
-    toggleShortcutsMenu,
+    // toggleShortcutsMenu,
+    togglePomodoroTimerMenu,
     modalWindowOpen,
     toggleModalWindow,
     settingsMenuOpen,
@@ -100,7 +101,8 @@ export default function MenuButtons() {
         onclick={
           (e)=>{
             e.stopPropagation()
-            toggleShortcutsMenu()
+            // toggleShortcutsMenu()
+            togglePomodoroTimerMenu()
             toggleMenuButton()
           }
         } />

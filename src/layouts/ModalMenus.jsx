@@ -16,7 +16,7 @@ export default function ModalMenus() {
     webShortcutLinksOpen,
     modalWindowOpen,
     settingsMenuOpen,
-    shortcutsMenuOpen,
+    pomodoroTimerMenuOpen,
     googleAppsMenuOpen,
     todoMenuOpen,
     addWebShortcutLinkMenuOpen,
@@ -24,7 +24,7 @@ export default function ModalMenus() {
     toggleWebShortcutsButton,
     toggleModalWindow,
     toggleSettingsMenu,
-    toggleShortcutsMenu,
+    togglePomodoroTimerMenu,
     toggleGoogleAppsMenu,
     toggleTodoMenu,
     toggleWebShortcutLinkMenu,
@@ -54,14 +54,8 @@ export default function ModalMenus() {
 
 
       {/* Pomodoro-Menu */}
-      {/* <PopupMenu/> */}
       <PomodoroMenu/>
-      {/* {PopupMenu(
-        shortcutsMenuOpen,
-        toggleShortcutsMenu,
-        "SHORTCUTS",
-        shortcutsMenuOpen && <div>This is Shortcuts content</div>
-      )} */}
+      
 
       {/* Google Apps */}
       {/* #1 */}
