@@ -4,6 +4,7 @@ import todos from './todo_1.png';
 import gapps from './google_apps.png';
 import shortcut from './shortcut_1.png';
 import weblinksShortcut from './web_links.png';
+import pomodoro from './pomodoro.png'
 
 const btnIcons = {
   menu,
@@ -11,7 +12,8 @@ const btnIcons = {
   todos,
   shortcut,
   gapps,
-  weblinksShortcut
+  weblinksShortcut,
+  pomodoro
 };
 
 export default btnIcons;

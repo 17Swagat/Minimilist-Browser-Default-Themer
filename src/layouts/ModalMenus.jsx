@@ -2,6 +2,7 @@ import { PopupMenu} from "../components/PopupMenus";
 import { GMenu } from "./menus/GApps/GMenu";
 import { useAppStateContext } from "../contexts/AppStates";
 import AddWebShortcutMenu from "./menus/AddWebShortcut/AddWebShortcut";
+import PomodoroMenu from "./menus/Pomodoro/PomodoroMenu";
 
 
 // Menu Importing
@@ -52,13 +53,15 @@ export default function ModalMenus() {
       <TodoMenuUI />
 
 
-      {/* Shortcuts */}
-      {PopupMenu(
+      {/* Pomodoro-Menu */}
+      {/* <PopupMenu/> */}
+      <PomodoroMenu/>
+      {/* {PopupMenu(
         shortcutsMenuOpen,
         toggleShortcutsMenu,
         "SHORTCUTS",
         shortcutsMenuOpen && <div>This is Shortcuts content</div>
-      )}
+      )} */}
 
       {/* Google Apps */}
       {/* #1 */}

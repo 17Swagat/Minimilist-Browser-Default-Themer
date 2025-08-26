@@ -70,8 +70,8 @@ export default function MenuButtons() {
           }
         } />
       
-      {/* Shortcuts */}
-      <MenuBtn 
+      {/* Shortcuts :=> [Will include it in the Settings Menu] */}
+      {/* <MenuBtn 
         btnName={
           <img src={btnIcons.shortcut} alt="" className="pointer-events-none"/>
         }
@@ -85,7 +85,26 @@ export default function MenuButtons() {
             toggleShortcutsMenu()
             toggleMenuButton()
           }
+        } /> */}
+
+      
+      {/* Pomodoro */}
+      <MenuBtn 
+        btnName={
+          <img src={btnIcons.pomodoro} alt="" className="pointer-events-none"/>
+        }
+        // btnName="Shortcuts" 
+        isVisible={menuButtonOn} 
+        color="bg-cyan-800" 
+        transitionAngle={60} 
+        onclick={
+          (e)=>{
+            e.stopPropagation()
+            toggleShortcutsMenu()
+            toggleMenuButton()
+          }
         } />
+
 
        
       {/* Google Apps */}
