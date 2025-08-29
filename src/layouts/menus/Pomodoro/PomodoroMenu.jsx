@@ -69,8 +69,8 @@ function MenuBody() {
   };
 
   return (
-    <div className="w-full h-full bg-transparent flex justify-center items-center p-1">
-      <div className="p-4 w-74 py-5 bg-[#04143a] rounded-2xl">
+    <div className="w-full h-full bg-transparent flex justify-center items-center  py-1.5 font-poppins">
+      <div className="p-4 w-74 h-[100%] flex flex-col justify-center  bg-[#02184bd7] rounded-2xl">
         <div className="text-center mb-4">
           <div className="text-3xl text-white font-bold mb-2">{formatTime(timeLeft)}</div>
           <div className="text-sm text-gray-300">{timerTypes[selectedTimer].name}</div>
@@ -93,7 +93,7 @@ function MenuBody() {
           </button>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-3">
           <button
             onClick={() => selectTimer('short')}
             className={`w-full py-2 rounded ${

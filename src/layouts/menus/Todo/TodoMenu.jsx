@@ -56,7 +56,7 @@ function TodoMenu(){
         <div className="flex mb-6 gap-2">
           <input
             type="text"
-            className="flex-1 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-800 placeholder-gray-400"
+            className="font-poppins flex-1 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-800 placeholder-gray-400"
             value={inputText}
             placeholder="Write your todos here..."
             onChange={(e)=>{
@@ -70,7 +70,7 @@ function TodoMenu(){
 
 
         {/* Todo List */}
-        <div className=" overflow-y-auto flex flex-col gap-2 h-[80%]">
+        <div className=" overflow-y-auto flex flex-col gap-2 h-[80%] font-poppins">
           
           {todos.map((todo_item, index)=>{
             return <TodoItem todo_item={todo_item} key={todo_item.id} />

@@ -23,7 +23,7 @@ export default function MenuButtons() {
       
       {/* Menu Button */}
       <div
-        className="bg-gray-600 size-full rounded-full absolute z-5 transition duration-100 ease-linear active:invert hover:cursor-pointer select-none"
+        className="bg-gray-600 size-full rounded-full absolute z-5 transition ease-linear active:invert hover:cursor-pointer select-none hover:brightness-150 hover:transition-all duration-200"
         onClick={(e) => {
           e.stopPropagation();
           toggleMenuButton()

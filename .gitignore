@@ -28,3 +28,7 @@ dist-ssr
 src/assets/icons/google_apps/
 src/assets/icons/
 src/assets/background_images/
+
+*.zip
+Published Stuff/
+src/assets/fonts/Poppins/

@@ -45,12 +45,13 @@ export default function WebsiteShortcuts() {
 
   return (
     // WebShortcuts Button [Canvas] (On top of which buttons are present)
-    <div className="bg-transparent w-25 h-25 text-white absolute bottom-3 left-3 flex items-center justify-center z-1">
+    <div className="bg-transparent w-25 h-25 text-white absolute bottom-3 left-3 flex items-center justify-center z-1 ">
       
       {/* (Button): WebShortCut-Button -> "Click" */}
       <div
         className="w-[70px] h-[70px] bg-amber-300 rounded-full absolute left-0 bottom-0 z-5
-        flex justify-center items-center text-2xl text-black select-none hover:cursor-pointer"
+        flex justify-center items-center text-2xl text-black select-none hover:cursor-pointer
+        hover:brightness-150 active:invert hover:transition-all duration-300"
         onClick={(e) => {
           e.stopPropagation();
           toggleWebShortcutsButton((prev) => !prev);

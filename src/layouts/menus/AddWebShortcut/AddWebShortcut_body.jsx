@@ -11,19 +11,19 @@ export function AddWebShortcut_Body({onButtonClick}) {
   };
 
   return (
-    <div className="bg-teal-900 flex flex-col items-center justify-center w-full h-full p-5">
+    <div className="bg-[#592ba8ad] flex flex-col items-center justify-center w-full h-full p-5">
       <input
         type="text"
         placeholder="Enter website Name"
         ref={siteNameRef}
-        className="bg-gray-200 w-full text-2xl border border-gray-700 rounded-md p-3 m-2"
+        className="bg-gray-200 w-full text-2xl border border-gray-700 rounded-md p-3 m-2 font-poppins"
       />
 
       <input
         type="url"
         placeholder="Enter website URL"
         ref={siteUrlRef}
-        className="bg-gray-200 w-full text-2xl border border-gray-700 rounded-md p-3 m-2"
+        className="bg-gray-200 w-full text-2xl border border-gray-700 rounded-md p-3 m-2 font-poppins"
       />
 
       <button
