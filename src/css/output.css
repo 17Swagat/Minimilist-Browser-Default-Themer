@@ -871,9 +871,6 @@
   .bg-red-500 {
     background-color: var(--color-red-500);
   }
-  .bg-teal-900 {
-    background-color: var(--color-teal-900);
-  }
   .bg-transparent {
     background-color: transparent;
   }
@@ -1176,25 +1173,13 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
-  .duration-100 {
-    --tw-duration: 100ms;
-    transition-duration: 100ms;
-  }
   .duration-200 {
     --tw-duration: 200ms;
     transition-duration: 200ms;
   }
-  .duration-220 {
-    --tw-duration: 220ms;
-    transition-duration: 220ms;
-  }
   .duration-230 {
     --tw-duration: 230ms;
     transition-duration: 230ms;
-  }
-  .duration-250 {
-    --tw-duration: 250ms;
-    transition-duration: 250ms;
   }
   .duration-300 {
     --tw-duration: 300ms;
@@ -1387,26 +1372,10 @@
       }
     }
   }
-  .hover\:brightness-50 {
-    &:hover {
-      @media (hover: hover) {
-        --tw-brightness: brightness(50%);
-        filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
-      }
-    }
-  }
   .hover\:brightness-150 {
     &:hover {
       @media (hover: hover) {
         --tw-brightness: brightness(150%);
-        filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
-      }
-    }
-  }
-  .hover\:invert {
-    &:hover {
-      @media (hover: hover) {
-        --tw-invert: invert(100%);
         filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
       }
     }
@@ -1417,14 +1386,6 @@
         transition-property: all;
         transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
         transition-duration: var(--tw-duration, var(--default-transition-duration));
-      }
-    }
-  }
-  .hover\:duration-200 {
-    &:hover {
-      @media (hover: hover) {
-        --tw-duration: 200ms;
-        transition-duration: 200ms;
       }
     }
   }
